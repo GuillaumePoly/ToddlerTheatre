@@ -46,7 +46,9 @@ public class StoryPanel : MonoBehaviour
 
                 if (!isMain)
                 {
+                    _currentCharacter.m_DisableVFX = true;
                     _currentCharacter.Prop = null;
+                    _currentCharacter.m_DisableVFX = false;
                 }
             }
 

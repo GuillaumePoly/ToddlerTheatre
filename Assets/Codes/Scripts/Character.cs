@@ -32,10 +32,12 @@ public class Character : MonoBehaviour
     public SpriteRenderer propRenderer;
 
     public GameObject m_PropSwitchVFX;
+    public bool m_DisableVFX;
     public Response? Response
     {
         get => _response; set
         {
+            if (_response == value) return;
             _response = value;
             SetResponse();
         }
@@ -45,6 +47,7 @@ public class Character : MonoBehaviour
     {
         get => _prop; set
         {
+            if (_prop == value) return;
             _prop = value;
             SetProp();
         }
@@ -68,8 +71,6 @@ public class Character : MonoBehaviour
     
     private void SetResponse()
     {
-        var vfx = Instantiate(m_PropSwitchVFX);
-        vfx.transform.position = propRenderer.transform.position;
         responseRenderer.sprite = Response switch
         {
             global::Response.love => heart,
@@ -89,6 +90,12 @@ public class Character : MonoBehaviour
 
     private void SetProp()
     {
+        if (!m_DisableVFX)
+        {
+            var vfx = Instantiate(m_PropSwitchVFX);
+            vfx.transform.position = propRenderer.transform.position;
+        }
+        
         propRenderer.sprite = Prop switch
         {
             global::Prop.lightning => lightning,
