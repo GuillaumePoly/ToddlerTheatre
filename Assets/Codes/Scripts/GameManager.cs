@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
+    private bool _isPlaying;
+
     void Start()
     {
     }
@@ -23,7 +25,10 @@ public class GameManager : MonoBehaviour
 
     public void PlayScene()
     {
-        StartCoroutine("AnimateMainCharacter");
+        if (_isPlaying) return;
+
+        _isPlaying = true;
+        StartCoroutine(nameof(AnimateMainCharacter));
     }
 
     IEnumerator AnimateMainCharacter()
