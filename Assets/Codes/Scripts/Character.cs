@@ -7,5 +7,4 @@ public class Character : MonoBehaviour
     public CharacterType type;
     public Animator animator;
     public Response? response;
-
 }

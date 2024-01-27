@@ -40,20 +40,21 @@ public class GameManager : MonoBehaviour
 
         character.animator.SetBool("isMoving", true);
         foreach (var f in animateCharacterTo(character, secondPanelPos.position)) yield return f;
-        character.animator.SetBool("isMoving", true);
+        character.animator.SetBool("isMoving", false);
 
         yield return new WaitForSeconds(2);
 
         var thirdPanelPos = panels[2].mainCharacterMarker;
         character.animator.SetBool("isMoving", true);
         foreach (var f in animateCharacterTo(character, thirdPanelPos.position)) yield return f;
-        character.animator.SetBool("isMoving", true);
+        character.animator.SetBool("isMoving", false);
 
         yield return new WaitForSeconds(2);
 
         AddEnding("Happy Family");
     }
-
+    
+    
     IEnumerable animateCharacterTo(Character character, Vector3 target)
     {
         var initialPos = character.transform.position;
