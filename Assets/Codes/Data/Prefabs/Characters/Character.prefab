@@ -309,12 +309,12 @@ MonoBehaviour:
   skull: {fileID: 21300000, guid: 65c2f1c724011a44da4a2de3836bea98, type: 3}
   swooning: {fileID: 21300000, guid: fac6d572269200446aadf91fe36fd31d, type: 3}
   confused: {fileID: 21300000, guid: 916f5444c9a421e4b9188681a394614d, type: 3}
-  muscle: {fileID: 0}
-  yum: {fileID: 0}
-  teacher: {fileID: 0}
-  books: {fileID: 0}
-  hatchling: {fileID: 0}
-  chef: {fileID: 0}
+  muscle: {fileID: 21300000, guid: 5f46a6617fcc9eb4896b0abaeb16af57, type: 3}
+  yum: {fileID: 21300000, guid: 6faaeb48c20fbbd4cafe0a6393c5edbb, type: 3}
+  teacher: {fileID: 21300000, guid: 29ee45e5568e7c04dbacf1b9cf25cfcb, type: 3}
+  books: {fileID: 21300000, guid: 1fe609792c45ce649898de7c712a8cc5, type: 3}
+  hatchling: {fileID: 21300000, guid: e58e0e782a6779b4eb84b0240cd3aa1e, type: 3}
+  chef: {fileID: 21300000, guid: 44dd48fdf0b7d9049830ea13ea9c41ed, type: 3}
   sword: {fileID: 21300000, guid: e0e3107ee994c9843b61eba60e197ba0, type: 3}
   charm: {fileID: 21300000, guid: 4e4221baebc370641977ba9fbd00adf7, type: 3}
   dress: {fileID: 21300000, guid: 2c1f329ae7644b044846927a8b0886b8, type: 3}
