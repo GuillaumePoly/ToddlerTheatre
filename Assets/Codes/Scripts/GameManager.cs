@@ -77,4 +77,23 @@ public class GameManager : MonoBehaviour
         var tmp = ending.GetComponentInChildren<TextMeshProUGUI>();
         tmp.text = description;
     }
+
+    bool Interact(Character main, Character other)
+    {
+        if (main.Prop == Prop.sword)
+        {
+            main.Response = Response.love;
+            other.Die();
+        }
+        else
+        {
+            main.Response = Response.love;
+            other.Response = Response.heartbreak;
+        }
+
+        main.Prop = Prop.fire;
+        other.Prop = null;
+
+        return true;
+    }
 }
