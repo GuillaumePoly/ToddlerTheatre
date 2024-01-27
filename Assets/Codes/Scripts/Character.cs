@@ -4,7 +4,7 @@ public class Character : MonoBehaviour
 {
     public CharacterType type;
     public Animator animator;
-
+    
     private Response? _response;
     private Prop? _prop;
 
@@ -25,9 +25,7 @@ public class Character : MonoBehaviour
     public SpriteRenderer responseRenderer;
     public SpriteRenderer propRenderer;
 
-
-    public bool isMoving;
-
+    public GameObject m_PropSwitchVFX;
     public Response? Response
     {
         get => _response; set
@@ -61,17 +59,7 @@ public class Character : MonoBehaviour
                 break;
         }
     }
-
-    void Update()
-    {
-        animator.SetBool("isMoving", isMoving);
-
-        //if (isDead)
-        //{
-        //    //UpdateDeathProgress();
-        //}
-    }
-
+    
     private void SetResponse()
     {
         responseRenderer.sprite = Response switch
@@ -88,6 +76,7 @@ public class Character : MonoBehaviour
 
     private void SetProp()
     {
+        Instantiate(m_PropSwitchVFX);
         propRenderer.sprite = Prop switch
         {
             global::Prop.lightning => lightning,
