@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public Sprite heart;
     public Sprite heartbreak;
     public Sprite skull;
+    public Sprite swooning;
     public Sprite confused;
 
     public Sprite sword;
@@ -26,9 +27,6 @@ public class Character : MonoBehaviour
 
 
     public bool isMoving;
-
-    bool isDead;
-    float deathProgress;
 
     public Response? Response
     {
@@ -79,6 +77,7 @@ public class Character : MonoBehaviour
         responseRenderer.sprite = Response switch
         {
             global::Response.love => heart,
+            global::Response.swooning => swooning,
             global::Response.disgust => null,
             global::Response.heartbreak => heartbreak,
             global::Response.death => skull,
