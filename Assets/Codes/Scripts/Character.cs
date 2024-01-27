@@ -62,6 +62,8 @@ public class Character : MonoBehaviour
     
     private void SetResponse()
     {
+        var vfx = Instantiate(m_PropSwitchVFX);
+        vfx.transform.position = propRenderer.transform.position;
         responseRenderer.sprite = Response switch
         {
             global::Response.love => heart,
@@ -76,7 +78,6 @@ public class Character : MonoBehaviour
 
     private void SetProp()
     {
-        Instantiate(m_PropSwitchVFX);
         propRenderer.sprite = Prop switch
         {
             global::Prop.lightning => lightning,
