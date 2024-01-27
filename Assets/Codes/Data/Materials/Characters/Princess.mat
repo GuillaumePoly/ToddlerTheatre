@@ -29,8 +29,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BreahtIntensity: 0.8
-    - _BreathSpeed: 1.23
+    - _BreahtIntensity: 0.22
+    - _BreathSpeed: 4.05
     m_Colors:
     - _ChildHeightMinMax: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
