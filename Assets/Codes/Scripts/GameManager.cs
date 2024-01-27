@@ -38,11 +38,12 @@ public class GameManager : MonoBehaviour
         character.animator.SetBool("isMoving", true);
         foreach (var f in animateCharacterTo(character, secondPanelPos.position)) yield return f;
         character.animator.SetBool("isMoving", false);
-
+        
+        character.animator.SetBool("IsAttacking", true);
         if (Interact(character, secondCharacter))
         {
             yield return new WaitForSeconds(2);
-
+            character.animator.SetBool("IsAttacking", false);
             var thirdPanelPos = panels[2].mainCharacterMarker;
             character.animator.SetBool("isMoving", true);
             foreach (var f in animateCharacterTo(character, thirdPanelPos.position)) yield return f;
