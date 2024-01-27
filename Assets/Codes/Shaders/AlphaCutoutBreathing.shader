@@ -8,7 +8,6 @@ Shader "Custom/AlphaCutoutBreathing"
 		_Color ("Tint", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 		[PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
-		_SetTexture("SetTexture", 2D) = "white" {}
 		_BreahtIntensity("BreahtIntensity", Range( 0 , 1)) = 0.1
 		_ChildHeightMinMax("ChildHeightMinMax", Vector) = (0.58,0.84,0,0)
 		_BreathSpeed("BreathSpeed", Range( 0 , 5)) = 1
@@ -42,8 +41,6 @@ Shader "Custom/AlphaCutoutBreathing"
 			#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
 			#include "UnityCG.cginc"
 			#include "UnityShaderVariables.cginc"
-			#define ASE_NEEDS_VERT_POSITION
-			#define ASE_NEEDS_FRAG_COLOR
 
 
 			struct appdata_t
@@ -72,8 +69,7 @@ Shader "Custom/AlphaCutoutBreathing"
 			uniform float2 _ChildHeightMinMax;
 			uniform float _BreathSpeed;
 			uniform float _BreahtIntensity;
-			uniform sampler2D _SetTexture;
-			uniform float4 _SetTexture_ST;
+			uniform float4 _MainTex_ST;
 
 			
 			v2f vert( appdata_t IN  )
@@ -82,8 +78,9 @@ Shader "Custom/AlphaCutoutBreathing"
 				UNITY_SETUP_INSTANCE_ID(IN);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
 				UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
-				float smoothstepResult35 = smoothstep( _ChildHeightMinMax.x , _ChildHeightMinMax.y , IN.vertex.xyz.y);
-				float2 appendResult43 = (float2(IN.vertex.xyz.x , ( ( 0.5 * IN.vertex.xyz.y ) - ( smoothstepResult35 * ( IN.vertex.xyz.y + ( sin( ( _Time.y * _BreathSpeed ) ) * _BreahtIntensity ) ) ) )));
+				float2 texCoord54 = IN.texcoord.xy * float2( 1,1 ) + float2( 0,0 );
+				float smoothstepResult35 = smoothstep( _ChildHeightMinMax.x , _ChildHeightMinMax.y , texCoord54.y);
+				float2 appendResult43 = (float2(texCoord54.x , ( ( 0.5 * texCoord54.y ) - ( smoothstepResult35 * ( texCoord54.y + ( sin( ( _Time.y * _BreathSpeed ) ) * _BreahtIntensity ) ) ) )));
 				
 				
 				IN.vertex.xyz += float3( appendResult43 ,  0.0 ); 
@@ -115,9 +112,9 @@ Shader "Custom/AlphaCutoutBreathing"
 				UNITY_SETUP_INSTANCE_ID( IN );
 				UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX( IN );
 
-				float2 uv_SetTexture = IN.texcoord.xy * _SetTexture_ST.xy + _SetTexture_ST.zw;
+				float2 uv_MainTex = IN.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw;
 				
-				fixed4 c = ( tex2D( _SetTexture, uv_SetTexture ) * IN.color );
+				fixed4 c = tex2D( _MainTex, uv_MainTex );
 				c.rgb *= c.a;
 				return c;
 			}
@@ -131,45 +128,44 @@ Shader "Custom/AlphaCutoutBreathing"
 /*ASEBEGIN
 Version=19202
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;19;226,-132;Float;False;True;-1;2;ASEMaterialInspector;0;10;Custom/AlphaCutoutBreathing;0f8ba0101102bb14ebf021ddadce9b49;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;2;False;True;3;1;False;;10;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;0;;0;0;Standard;0;0;1;True;False;;False;0
-Node;AmplifyShaderEditor.SamplerNode;6;-347.5,-321.5;Inherit;True;Property;_TextureSample0;Texture Sample 0;1;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.VertexColorNode;32;-258.53,-103.8082;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TexturePropertyNode;5;-601.1406,-292.6199;Inherit;True;Property;_SetTexture;SetTexture;0;0;Create;True;0;0;0;False;0;False;None;79f0c66554bf68d42839b24581ca15de;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;33;2.57959,-123.2458;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;35;-595.8167,283.1148;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;38;-582.8896,505.122;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;39;-900.4196,515.1826;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;-331.9166,424.8148;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.PosVertexDataNode;41;-871.4401,155.0823;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;42;-485.34,166.7823;Inherit;False;2;2;0;FLOAT;0.5;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DynamicAppendNode;43;41.58271,251.4052;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;44;-99.23995,279.8823;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector2Node;36;-1046.123,284.6094;Inherit;False;Property;_ChildHeightMinMax;ChildHeightMinMax;2;0;Create;True;0;0;0;False;0;False;0.58,0.84;-0.5,0.5;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;36;-1046.123,284.6094;Inherit;False;Property;_ChildHeightMinMax;ChildHeightMinMax;1;0;Create;True;0;0;0;False;0;False;0.58,0.84;0,1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SinOpNode;47;-1066.785,513.5155;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;34;-1226.25,592.9331;Inherit;False;Property;_BreahtIntensity;BreahtIntensity;1;0;Create;True;0;0;0;False;0;False;0.1;0.1499996;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;34;-1226.25,592.9331;Inherit;False;Property;_BreahtIntensity;BreahtIntensity;0;0;Create;True;0;0;0;False;0;False;0.1;0.735436;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;49;-1224.785,493.5155;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;46;-1572.063,540.5609;Inherit;False;Property;_BreathSpeed;BreathSpeed;3;0;Create;True;0;0;0;False;0;False;1;3.112926;0;5;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;46;-1572.063,540.5609;Inherit;False;Property;_BreathSpeed;BreathSpeed;2;0;Create;True;0;0;0;False;0;False;1;0.68;0;5;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;48;-1424.785,457.5155;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
-WireConnection;19;0;33;0
+Node;AmplifyShaderEditor.VertexColorNode;32;-258.53,-103.8082;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;33;2.57959,-123.2458;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SamplerNode;52;-136.7849,-324.4845;Inherit;True;Property;_TextureSample0;Texture Sample 0;3;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TemplateShaderPropertyNode;53;-423.1357,-215.0285;Inherit;False;0;0;_MainTex;Shader;False;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TextureCoordinatesNode;54;-879.7565,-0.2251434;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+WireConnection;19;0;52;0
 WireConnection;19;1;43;0
-WireConnection;6;0;5;0
-WireConnection;33;0;6;0
-WireConnection;33;1;32;0
-WireConnection;35;0;41;2
+WireConnection;35;0;54;2
 WireConnection;35;1;36;1
 WireConnection;35;2;36;2
-WireConnection;38;0;41;2
+WireConnection;38;0;54;2
 WireConnection;38;1;39;0
 WireConnection;39;0;47;0
 WireConnection;39;1;34;0
 WireConnection;40;0;35;0
 WireConnection;40;1;38;0
-WireConnection;42;1;41;2
-WireConnection;43;0;41;1
+WireConnection;42;1;54;2
+WireConnection;43;0;54;1
 WireConnection;43;1;44;0
 WireConnection;44;0;42;0
 WireConnection;44;1;40;0
 WireConnection;47;0;49;0
 WireConnection;49;0;48;0
 WireConnection;49;1;46;0
+WireConnection;33;1;32;0
+WireConnection;52;0;53;0
 ASEEND*/
-//CHKSM=D9AE7D35B0F2589EEE037D4CC02C4AF8FC9ED4FE
+//CHKSM=B9EF5C75BE1D5275C8F1CE82E042BA76181F22D1
