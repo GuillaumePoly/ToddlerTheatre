@@ -20,6 +20,9 @@ public class AudioManager : MonoBehaviour
  public AudioClip[] m_DragonInteraction;
  public AudioClip[] m_WizardInteraction;
 
+[Title("TheatreSounds")]
+public AudioClip[] m_CurtainsInteraction;
+
  [Title("Clics")]
  public AudioClip[] m_Button;
  public AudioClip[] m_Grab;
@@ -39,7 +42,8 @@ public class AudioManager : MonoBehaviour
        WizardInteraction,
        Button,
        Grab,
-       Release
+       Release,
+       Curtains
  }
  private void OnEnable()
  {
@@ -104,6 +108,8 @@ public class AudioManager : MonoBehaviour
             case AudioType.Button: return m_Button;
             case AudioType.Grab: return m_Grab;
             case AudioType.Release: return m_Release;
+            case AudioType.Curtains: return m_CurtainsInteraction;
+
         }
         return null;
     } 

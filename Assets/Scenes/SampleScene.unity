@@ -1101,13 +1101,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource2D: {fileID: 8875123763852013341, guid: d568a6f1b6168b342aa1f23a4f0d6e2c, type: 3}
-  m_CrowdBooing: []
-  m_CrowdLaughing: []
-  m_CrowdCheering: []
+  m_CrowdBooing:
+  - {fileID: 8300000, guid: 6d7b31bf92a378747b702329daf30b06, type: 3}
+  - {fileID: 8300000, guid: 8a9ca98c717c39c4fb1130040c03aa8a, type: 3}
+  m_CrowdLaughing:
+  - {fileID: 8300000, guid: aea5895efa801574a9450af43e5df7e8, type: 3}
+  - {fileID: 8300000, guid: b728f3224d7de954bbd051f551495495, type: 3}
+  - {fileID: 8300000, guid: afe9f13ec2189fb4eac32a61e291892a, type: 3}
+  - {fileID: 8300000, guid: 6ad8550c58c3d7b49bd1631222f789f3, type: 3}
+  - {fileID: 8300000, guid: d8df5b47efe627b4ba8512d5befb1f8e, type: 3}
+  - {fileID: 8300000, guid: 7ebcc108793976b409a6abf8c9d0465f, type: 3}
+  - {fileID: 8300000, guid: 3c2f20a27af0eef4c87b6e9f44ff1f19, type: 3}
+  - {fileID: 8300000, guid: bae1b2cf99ced484ea9a118fcae4feda, type: 3}
+  m_CrowdCheering:
+  - {fileID: 8300000, guid: c0e7c68678984ab42af0cd42338a555b, type: 3}
+  - {fileID: 8300000, guid: ad7357c86a1437d40943124d6d6ca6ec, type: 3}
+  - {fileID: 8300000, guid: 2a0e1578dc66c8a4bae77ef1c5f6e5c8, type: 3}
+  - {fileID: 8300000, guid: c1650e1932c819a41874d1543ad09408, type: 3}
+  - {fileID: 8300000, guid: e75c667e9a806dd4b82f5afe3073f417, type: 3}
   m_KnightInteraction: []
   m_PrincessInteraction: []
   m_DragonInteraction: []
   m_WizardInteraction: []
+  m_CurtainsInteraction:
+  - {fileID: 8300000, guid: ecbf2f7f7a595d641bf315557db3bfa8, type: 3}
   m_Button: []
   m_Grab:
   - {fileID: 8300000, guid: 1165186274b34544c93847f3ead3167e, type: 3}
