@@ -574,10 +574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Princess
       objectReference: {fileID: 0}
-    - target: {fileID: 2054036421077211818, guid: fa11bc08a5e192b4383cb65282376881, type: 3}
-      propertyPath: type
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2546047703013381689, guid: fa11bc08a5e192b4383cb65282376881, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -5685,10 +5681,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 748885510}
     m_Modifications:
-    - target: {fileID: 4612468226377854140, guid: 2179d806464b695478f39e28adaaadf7, type: 3}
-      propertyPath: type
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4984458489872530164, guid: 2179d806464b695478f39e28adaaadf7, type: 3}
       propertyPath: m_Name
       value: Dragon

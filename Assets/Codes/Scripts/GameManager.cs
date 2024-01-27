@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
         foreach (var f in animateCharacterTo(character, secondPanelPos.position)) yield return f;
         character.animator.SetBool("isMoving", false);
 
-        if (Interact(character, secondCharacter)) {
+        if (Interact(character, secondCharacter))
+        {
             yield return new WaitForSeconds(2);
 
             var thirdPanelPos = panels[2].mainCharacterMarker;
@@ -84,7 +85,11 @@ public class GameManager : MonoBehaviour
         var mainProp = main.Prop;
         var otherType = other.type;
 
-        switch ((mainProp, otherType)) {
+        var shouldEnd = false;
+
+        switch ((mainProp, otherType))
+        {
+            // Knight
             case (Prop.sword, CharacterType.Dragon or CharacterType.Princess):
                 main.Prop = Prop.key;
                 other.Die();
@@ -92,29 +97,44 @@ public class GameManager : MonoBehaviour
             case (Prop.sword, CharacterType.Wizard):
                 main.Prop = null;
                 main.Response = Response.confused;
+                shouldEnd = true;
                 break;
-            case (Prop.fire, _):
-                main.Prop = otherType switch {
-                };
+
+            // Dragon
+            case (Prop.fire, CharacterType.Princess):
+                main.Prop = null;
+                shouldEnd = true;
+                break;
+            case (Prop.fire, CharacterType.Knight):
+                main.Prop = Prop.sword;
                 other.Die();
                 break;
+            case (Prop.fire, CharacterType.Wizard):
+                // Fix this?
+                main.Prop = Prop.lightning;
+                other.Die();
+                break;
+
+            // TODO: Handle sparkle prop cases
+
+            // Wizard
+            case (Prop.lightning, CharacterType.Dragon):
+                main.Prop = Prop.key;
+                other.Die();
+                break;
+            case (Prop.lightning, CharacterType.Knight):
+                main.Prop = null;
+                main.Die();
+                shouldEnd = true;
+                break;
+            case (Prop.lightning, CharacterType.Princess):
+                other.Die();
+                main.Prop = Prop.dress;
+                break;
+
         };
 
-        if (main.Prop == Prop.sword)
-        {
-            main.Response = Response.love;
-            other.Die();
-        }
-        else
-        {
-            main.Response = Response.love;
-            other.Response = Response.heartbreak;
-        }
-
-        main.Prop = Prop.fire;
-        other.Prop = null;
-
-        return true;
+        return !shouldEnd;
     }
     void Resolve(Character main, Character other)
     {

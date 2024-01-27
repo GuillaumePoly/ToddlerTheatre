@@ -76,49 +76,28 @@ public class Character : MonoBehaviour
 
     private void SetResponse()
     {
-        switch (Response)
+        responseRenderer.sprite = Response switch
         {
-            case global::Response.love:
-                responseRenderer.sprite = heart;
-                break;
-            case global::Response.disgust:
-                responseRenderer.sprite = null;
-                break;
-            case global::Response.heartbreak:
-                responseRenderer.sprite = heartbreak;
-                break;
-            case global::Response.death:
-                responseRenderer.sprite = skull;
-                break;
-            case global::Response.confused:
-                responseRenderer.sprite = confused;
-                break;
-            case null:
-                responseRenderer.sprite = null;
-                break;
+            global::Response.love => heart,
+            global::Response.disgust => null,
+            global::Response.heartbreak => heartbreak,
+            global::Response.death => skull,
+            global::Response.confused => confused,
+            _ => null,
         };
     }
 
     private void SetProp()
     {
-        switch (Prop)
+        propRenderer.sprite = Prop switch
         {
-            case global::Prop.lightning:
-                propRenderer.sprite = lightning;
-                break;
-            case global::Prop.sword:
-                propRenderer.sprite = sword;
-                break;
-            case global::Prop.fire:
-                propRenderer.sprite = fire;
-                break;
-            case global::Prop.key:
-                propRenderer.sprite = key;
-                break;
-            case global::Prop.dress:
-                propRenderer.sprite = dress;
-                break;
-        }
+            global::Prop.lightning => lightning,
+            global::Prop.sword => sword,
+            global::Prop.fire => fire,
+            global::Prop.key => key,
+            global::Prop.dress => dress,
+            _ => null,
+        };
     }
 
     public void Die()
@@ -126,15 +105,4 @@ public class Character : MonoBehaviour
         Response = global::Response.death;
         animator.SetBool("isDeath", true);
     }
-
-    //void UpdateDeathProgress()
-    //{
-    //    deathProgress += Time.deltaTime;
-    //    transform.rotation = Quaternion.Lerp(Quaternion.identity, Quaternion.AngleAxis(-90, Vector3.forward), deathProgress);
-    //    if (deathProgress >= 1)
-    //    {
-    //        deathProgress = 1;
-    //        isDead = false;
-    //    }
-    //}
 }
