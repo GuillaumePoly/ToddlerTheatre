@@ -3,4 +3,5 @@ public enum Response {
     disgust,
     heartbreak,
     death,
+    confused,
 }

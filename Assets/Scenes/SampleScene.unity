@@ -696,7 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 87571619}
   markers: []
-  m_AudioManager: {fileID: 0}
+  m_AudioManager: {fileID: 2039959307}
   selectedCharacter: {fileID: 0}
 --- !u!1 &764064913
 GameObject:
@@ -20667,6 +20667,62 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 897956bc861ac494789385bc80a3cefc, type: 3}
+--- !u!1 &2039959306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039959308}
+  - component: {fileID: 2039959307}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2039959307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039959306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1d028376f95a746be08a773f1deb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource2D: {fileID: 8875123763852013341, guid: d568a6f1b6168b342aa1f23a4f0d6e2c, type: 3}
+  m_CrowdBooing: []
+  m_CrowdLaughing: []
+  m_CrowdCheering: []
+  m_KnightInteraction: []
+  m_PrincessInteraction: []
+  m_DragonInteraction: []
+  m_WizardInteraction: []
+  m_Button: []
+  m_Grab:
+  - {fileID: 8300000, guid: 1165186274b34544c93847f3ead3167e, type: 3}
+  m_Release: []
+--- !u!4 &2039959308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039959306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98356664, y: -0.13894662, z: -9.925411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2123275198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 318165868427926767, guid: af88acfaaa5288648b4ebea05ecc4c8b, type: 3}
@@ -20694,3 +20750,4 @@ SceneRoots:
   - {fileID: 87571620}
   - {fileID: 329626600}
   - {fileID: 540255389}
+  - {fileID: 2039959308}

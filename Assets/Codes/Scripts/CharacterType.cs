@@ -2,5 +2,6 @@ public enum CharacterType
 {
     Knight,
     Dragon,
-    Princess
+    Princess,
+    Wizard,
 }

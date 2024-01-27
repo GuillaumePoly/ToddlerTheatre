@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public Sprite heart;
     public Sprite heartbreak;
     public Sprite skull;
+    public Sprite confused;
 
     public Sprite sword;
     public Sprite charm;
@@ -19,6 +20,7 @@ public class Character : MonoBehaviour
     public Sprite lightning;
     public Sprite key;
 
+    public SpriteRenderer characterRenderer;
     public SpriteRenderer responseRenderer;
     public SpriteRenderer propRenderer;
 
@@ -66,10 +68,10 @@ public class Character : MonoBehaviour
     {
         animator.SetBool("isMoving", isMoving);
 
-        if (isDead)
-        {
-            UpdateDeathProgress();
-        }
+        //if (isDead)
+        //{
+        //    //UpdateDeathProgress();
+        //}
     }
 
     private void SetResponse()
@@ -87,6 +89,9 @@ public class Character : MonoBehaviour
                 break;
             case global::Response.death:
                 responseRenderer.sprite = skull;
+                break;
+            case global::Response.confused:
+                responseRenderer.sprite = confused;
                 break;
             case null:
                 responseRenderer.sprite = null;
@@ -119,17 +124,17 @@ public class Character : MonoBehaviour
     public void Die()
     {
         Response = global::Response.death;
-        isDead = true;
+        animator.SetBool("isDeath", true);
     }
 
-    void UpdateDeathProgress()
-    {
-        deathProgress += Time.deltaTime;
-        transform.rotation = Quaternion.Lerp(Quaternion.identity, Quaternion.AngleAxis(-90, Vector3.forward), deathProgress);
-        if (deathProgress >= 1)
-        {
-            deathProgress = 1;
-            isDead = false;
-        }
-    }
+    //void UpdateDeathProgress()
+    //{
+    //    deathProgress += Time.deltaTime;
+    //    transform.rotation = Quaternion.Lerp(Quaternion.identity, Quaternion.AngleAxis(-90, Vector3.forward), deathProgress);
+    //    if (deathProgress >= 1)
+    //    {
+    //        deathProgress = 1;
+    //        isDead = false;
+    //    }
+    //}
 }

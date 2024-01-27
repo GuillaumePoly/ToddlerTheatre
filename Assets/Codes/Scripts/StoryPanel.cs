@@ -20,6 +20,8 @@ public class StoryPanel : MonoBehaviour
 
     public Character currentCharacter => _currentCharacter;
 
+    public bool isLocked;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -30,6 +32,8 @@ public class StoryPanel : MonoBehaviour
 
     void Update()
     {
+        if (isLocked) return;
+
         if (InputReceiver.m_ClickedPrevious && !InputReceiver.m_Clicked)
         {
             if (_hoverCharacter != null && IsFree)
@@ -37,6 +41,8 @@ public class StoryPanel : MonoBehaviour
                 _currentCharacter = _hoverCharacter;
                 // Snap the character to the right position.
                 _currentCharacter.transform.position = isMain ? mainCharacterMarker.position : panelCharacterMarker.position;
+
+                _currentCharacter.characterRenderer.flipX = isMain ? false : true;
             }
 
             _hoverCharacter = null;
