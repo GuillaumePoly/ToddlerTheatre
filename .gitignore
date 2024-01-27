@@ -62,3 +62,23 @@ sysinfo.txt
 crashlytics-build.properties
 
 .vsconfig
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 10x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 12x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 14x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 15x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/HDRP 16x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 10x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 12x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 14x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 15x.unitypackage.meta
+
+Assets/External/AmplifyShaderEditor/Plugins/EditorResources/Templates/URP 16x.unitypackage.meta
