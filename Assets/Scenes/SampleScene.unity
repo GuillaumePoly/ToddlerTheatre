@@ -160,7 +160,7 @@ MonoBehaviour:
   - {fileID: 266845257}
   - {fileID: 1686695177}
   - {fileID: 2140561720}
-  ending: {fileID: 4470025459224575588, guid: f35ce14464eb8154cb409e9d6c461d92, type: 3}
+  endingPrefab: {fileID: 4470025459224575588, guid: f35ce14464eb8154cb409e9d6c461d92, type: 3}
 --- !u!4 &87571620
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public List<StoryPanel> panels;
     public List<Transform> mainCharacterMarkers;
-    public GameObject ending;
+    public GameObject endingPrefab;
 
     void Start()
     {
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        AddEnding();
+        AddEnding("Happy Family");
     }
 
     IEnumerable animateCharacterTo(Character character, Vector3 target)
@@ -59,8 +60,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void AddEnding()
+    void AddEnding(string description)
     {
-        Instantiate(ending, new Vector3(0, 0, 10), Quaternion.identity, Camera.main.transform);
+        var ending = Instantiate(endingPrefab, new Vector3(0, 0, 10), Quaternion.identity, Camera.main.transform);
+        var tmp = ending.GetComponentInChildren<TextMeshProUGUI>();
+        tmp.text = description;
     }
 }
