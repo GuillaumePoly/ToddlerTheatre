@@ -37,6 +37,7 @@ public class StoryPanel : MonoBehaviour
                 _currentCharacter = _hoverCharacter;
                 // Snap the character to the right position.
                 _currentCharacter.transform.position = isMain ? mainCharacterMarker.position : panelCharacterMarker.position;
+                _currentCharacter.GetComponentInChildren<SpriteRenderer>().flipX = !isMain;
             }
 
             _hoverCharacter = null;
