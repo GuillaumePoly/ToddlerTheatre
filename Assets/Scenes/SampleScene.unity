@@ -153,13 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  mainCharacterMarkers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2123275201}
+  - {fileID: 1585693883}
+  - {fileID: 1481543762}
+  endingPrefab: {fileID: 4470025459224575588, guid: f35ce14464eb8154cb409e9d6c461d92, type: 3}
 --- !u!4 &87571620
 Transform:
   m_ObjectHideFlags: 0
@@ -436,6 +433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forest
       objectReference: {fileID: 0}
+    - target: {fileID: 5165575532342585809, guid: af88acfaaa5288648b4ebea05ecc4c8b, type: 3}
+      propertyPath: isMain
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -646,9 +647,9 @@ Transform:
   m_LocalScale: {x: 0.75251, y: 0.75251, z: 0.75251}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 125625991}
   - {fileID: 2123275198}
   - {fileID: 1585693880}
+  - {fileID: 125625991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &955877187
@@ -769,11 +770,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2179d806464b695478f39e28adaaadf7, type: 3}
+--- !u!114 &1481543762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6585290185621457097, guid: 204216cdf4893e94593666937c1c0d29, type: 3}
+  m_PrefabInstance: {fileID: 955877187}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109aa104f7d1ad9469fdd4dd3be67306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1585693880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5940576321616115626, guid: 897956bc861ac494789385bc80a3cefc, type: 3}
   m_PrefabInstance: {fileID: 1927444937}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1585693883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1275854666771464852, guid: 897956bc861ac494789385bc80a3cefc, type: 3}
+  m_PrefabInstance: {fileID: 1927444937}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109aa104f7d1ad9469fdd4dd3be67306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1803725609
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +808,8 @@ GameObject:
   - component: {fileID: 1803725610}
   - component: {fileID: 1803725611}
   - component: {fileID: 1803725612}
-  m_Layer: 0
+  - component: {fileID: 1803725613}
+  m_Layer: 7
   m_Name: PlayButton
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -904,6 +928,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1803725613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803725609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabc77f292ca6a24890bc29ce4cd36ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 87571619}
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &1857207265 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2546047703013381689, guid: 0459389a60f4d5149b8a9f1b3a83421a, type: 3}
@@ -976,6 +1016,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 318165868427926767, guid: af88acfaaa5288648b4ebea05ecc4c8b, type: 3}
   m_PrefabInstance: {fileID: 524226721}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2123275201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5165575532342585809, guid: af88acfaaa5288648b4ebea05ecc4c8b, type: 3}
+  m_PrefabInstance: {fileID: 524226721}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109aa104f7d1ad9469fdd4dd3be67306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

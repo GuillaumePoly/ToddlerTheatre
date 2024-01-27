@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 769087814787850468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.32, z: 0}
+  m_LocalPosition: {x: 0.15, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 6908893071291850620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.15, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,8 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109aa104f7d1ad9469fdd4dd3be67306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hoverCharacter: {fileID: 0}
   _currentCharacter: {fileID: 0}
-  _currentCharacterType: 0
+  panelCharacterMarker: {fileID: 6517711867319629850}
+  mainCharacterMarker: {fileID: 9202016210459683065}
   isMain: 0
 --- !u!61 &6394685450856049263
 BoxCollider2D:

@@ -6,27 +6,48 @@ using UnityEngine;
 public class StoryPanel : MonoBehaviour
 {
     [SerializeField]
+    private Character _hoverCharacter;
+
+    [SerializeField]
     private Character _currentCharacter;
-    [SerializeField] 
-    private CharacterType _currentCharacterType;
+
+    public Transform panelCharacterMarker;
+    public Transform mainCharacterMarker;
 
     public bool isMain;
-    public void SetCharacter(CharacterType type) => _currentCharacterType = type;
+
+    public bool IsFree => _currentCharacter == null;
+
+    public Character currentCharacter => _currentCharacter;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && _currentCharacter==null)
+        if (other.CompareTag("Player"))
         {
-            _currentCharacter = other.GetComponent<Character>();
-            _currentCharacterType = _currentCharacter.type;
+            _hoverCharacter = other.GetComponent<Character>();
         }
     }
-    
+
+    void Update()
+    {
+        if (InputReceiver.m_ClickedPrevious && !InputReceiver.m_Clicked)
+        {
+            if (_hoverCharacter != null && IsFree)
+            {
+                _currentCharacter = _hoverCharacter;
+                // Snap the character to the right position.
+                _currentCharacter.transform.position = isMain ? mainCharacterMarker.position : panelCharacterMarker.position;
+            }
+
+            _hoverCharacter = null;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && _currentCharacter!=null)
+        if (other.CompareTag("Player"))
         {
-            _currentCharacter = null;
+            _hoverCharacter = null;
         }
     }
 }

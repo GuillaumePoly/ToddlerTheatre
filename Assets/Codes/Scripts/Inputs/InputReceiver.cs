@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class InputReceiver : MonoBehaviour
 {
+    public static bool m_ClickedPrevious;
     public static bool m_Clicked;
     public static Vector2 m_PointerPos;
     public static Vector2 m_WorldPointerPos;
@@ -19,12 +20,13 @@ public class InputReceiver : MonoBehaviour
 
     public void OnPointer(InputAction.CallbackContext ctx)
     {
-        m_Clicked = ctx.ReadValue<float>()>0?true:false;
+        m_ClickedPrevious = m_Clicked;
+        m_Clicked = ctx.ReadValue<float>() > 0;
     }
 
     public void OnPointerPos(InputAction.CallbackContext ctx)
     {
-            m_PointerPos = ctx.ReadValue<Vector2>();
-            m_WorldPointerPos = cam.ScreenToWorldPoint(m_PointerPos);
+        m_PointerPos = ctx.ReadValue<Vector2>();
+        m_WorldPointerPos = cam.ScreenToWorldPoint(m_PointerPos);
     }
 }

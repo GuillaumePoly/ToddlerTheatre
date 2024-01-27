@@ -9,7 +9,7 @@ public class CharacterSelection : MonoBehaviour
 {
     public GameManager gameManager;
     public List<Transform> markers;
-    
+
     private Camera cam;
     private RaycastHit2D hit;
     [SerializeField]
@@ -24,7 +24,7 @@ public class CharacterSelection : MonoBehaviour
         if (InputReceiver.m_Clicked)
         {
             hit = Physics2D.Raycast(InputReceiver.m_WorldPointerPos, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Toddler"));
-            if (hit.transform!=null)
+            if (hit.transform != null)
             {
                 selectedCharacter = hit.transform;
             }
@@ -38,12 +38,7 @@ public class CharacterSelection : MonoBehaviour
         {
             selectedCharacter.transform.position = InputReceiver.m_WorldPointerPos;
         }
-        
-        // var isPlayButton = hit.collider.CompareTag("Finish");
-        // if (isPlayButton) {
-        //     gameManager.PlayScene();
-        //     return;
-        // }
+
 
         // if (hit.collider.CompareTag("Player"))
         // {
@@ -55,7 +50,7 @@ public class CharacterSelection : MonoBehaviour
         //     selectedCharacter = null;
         //     return;
         // }
-       
+
         // var freeMarker = markers.FirstOrDefault(m => m.childCount == 0);
         //
         // if (freeMarker != null)

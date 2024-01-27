@@ -9,8 +9,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public List<StoryPanel> panels;
-    public List<Transform> mainCharacterMarkers;
     public GameObject endingPrefab;
+
+    public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
     void Start()
     {
@@ -27,17 +28,21 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AnimateMainCharacter()
     {
-        var character = panels.First().GetComponentInChildren<Character>();
+        var character = panels.First().currentCharacter;
         yield return new WaitForSeconds(2);
 
-        var secondPanelPos = mainCharacterMarkers[1];
+        var secondPanelPos = panels[1].mainCharacterMarker;
 
+        character.isMoving = true;
         foreach (var f in animateCharacterTo(character, secondPanelPos.position)) yield return f;
+        character.isMoving = false;
 
         yield return new WaitForSeconds(2);
 
-        var thirdPanelPos = mainCharacterMarkers[2];
+        var thirdPanelPos = panels[2].mainCharacterMarker;
+        character.isMoving = true;
         foreach (var f in animateCharacterTo(character, thirdPanelPos.position)) yield return f;
+        character.isMoving = false;
 
         yield return new WaitForSeconds(2);
 

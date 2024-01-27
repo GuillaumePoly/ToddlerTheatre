@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6517711867319629850, guid: 8339902361f057b45a0706175592eee7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8501825124794185984, guid: 8339902361f057b45a0706175592eee7, type: 3}
       propertyPath: m_Name
       value: Castle
@@ -67,6 +71,14 @@ PrefabInstance:
     - target: {fileID: 8501825124794185984, guid: 8339902361f057b45a0706175592eee7, type: 3}
       propertyPath: m_TagString
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202016210459683065, guid: 8339902361f057b45a0706175592eee7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9202016210459683065, guid: 8339902361f057b45a0706175592eee7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
