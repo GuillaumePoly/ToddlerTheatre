@@ -43,6 +43,11 @@ public class StoryPanel : MonoBehaviour
                 _currentCharacter.transform.position = isMain ? mainCharacterMarker.position : panelCharacterMarker.position;
 
                 _currentCharacter.characterRenderer.flipX = isMain ? false : true;
+
+                if (!isMain)
+                {
+                    _currentCharacter.Prop = null;
+                }
             }
 
             _hoverCharacter = null;

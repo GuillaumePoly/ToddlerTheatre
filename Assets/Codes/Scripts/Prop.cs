@@ -5,4 +5,5 @@ public enum Prop
     fire,
     key,
     dress,
+    magic,
 }

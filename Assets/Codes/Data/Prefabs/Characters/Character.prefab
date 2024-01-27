@@ -309,6 +309,12 @@ MonoBehaviour:
   skull: {fileID: 21300000, guid: 65c2f1c724011a44da4a2de3836bea98, type: 3}
   swooning: {fileID: 21300000, guid: fac6d572269200446aadf91fe36fd31d, type: 3}
   confused: {fileID: 21300000, guid: 916f5444c9a421e4b9188681a394614d, type: 3}
+  muscle: {fileID: 0}
+  yum: {fileID: 0}
+  teacher: {fileID: 0}
+  books: {fileID: 0}
+  hatchling: {fileID: 0}
+  chef: {fileID: 0}
   sword: {fileID: 21300000, guid: e0e3107ee994c9843b61eba60e197ba0, type: 3}
   charm: {fileID: 21300000, guid: 4e4221baebc370641977ba9fbd00adf7, type: 3}
   dress: {fileID: 21300000, guid: 2c1f329ae7644b044846927a8b0886b8, type: 3}
@@ -318,7 +324,7 @@ MonoBehaviour:
   characterRenderer: {fileID: 2206997228461294274}
   responseRenderer: {fileID: 979970573314705467}
   propRenderer: {fileID: 2900434698683255329}
-  isMoving: 0
+  m_PropSwitchVFX: {fileID: 0}
 --- !u!95 &2742423435783544670
 Animator:
   serializedVersion: 5

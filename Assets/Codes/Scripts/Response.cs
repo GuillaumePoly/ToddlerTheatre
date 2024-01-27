@@ -1,7 +1,12 @@
 public enum Response
 {
     love,
-    disgust,
+    chef,
+    strength,
+    yum,
+    book,
+    teacher,
+    hatchling,
     heartbreak,
     swooning,
     death,

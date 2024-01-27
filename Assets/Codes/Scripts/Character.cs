@@ -13,6 +13,12 @@ public class Character : MonoBehaviour
     public Sprite skull;
     public Sprite swooning;
     public Sprite confused;
+    public Sprite muscle;
+    public Sprite yum;
+    public Sprite teacher;
+    public Sprite books;
+    public Sprite hatchling;
+    public Sprite chef;
 
     public Sprite sword;
     public Sprite charm;
@@ -68,10 +74,15 @@ public class Character : MonoBehaviour
         {
             global::Response.love => heart,
             global::Response.swooning => swooning,
-            global::Response.disgust => null,
             global::Response.heartbreak => heartbreak,
             global::Response.death => skull,
             global::Response.confused => confused,
+            global::Response.strength => muscle,
+            global::Response.yum => yum,
+            global::Response.teacher => teacher,
+            global::Response.book => books,
+            global::Response.hatchling => hatchling,
+            global::Response.chef => chef,
             _ => null,
         };
     }
@@ -92,6 +103,7 @@ public class Character : MonoBehaviour
     public void Die()
     {
         Response = global::Response.death;
+        Prop = null;
         animator.SetBool("isDeath", true);
     }
 }
