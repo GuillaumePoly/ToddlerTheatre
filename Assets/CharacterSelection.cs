@@ -15,20 +15,24 @@ public class CharacterSelection : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        { // if left button pressed...
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
+        if (!Input.GetMouseButtonDown(0)) return;
+
+            var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var hit = Physics2D.Raycast(point, Vector2.zero);
+
+            if (hit.collider == null) return;
+
+                var isCharacter = hit.collider.CompareTag("Player");
+                if (!isCharacter) return;
+
                 var character = hit.transform;
 
-                var freeMarker = markers.FirstOrDefault();
+                var freeMarker = markers.Where(m => m.childCount == 0).FirstOrDefault();
 
-                if (freeMarker != null) {
+                if (freeMarker != null)
+                {
                     character.parent = freeMarker;
+                    character.position = freeMarker.position;
                 }
-            }
         }
-    }
 }

@@ -412,9 +412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   markers:
-  - {fileID: 473346577}
-  - {fileID: 685544693}
-  - {fileID: 1208555675}
+  - {fileID: 473346578}
+  - {fileID: 685544694}
+  - {fileID: 1208555676}
 --- !u!1 &753891918
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 1164899218}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 1629535698}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 1793524745}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
