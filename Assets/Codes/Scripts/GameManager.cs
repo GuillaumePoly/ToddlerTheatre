@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AmplifyShaderEditor;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -33,21 +34,29 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AnimateMainCharacter()
     {
-        var character = panels.First().currentCharacter;
+        var mainCharacter = panels.First().currentCharacter;
         yield return new WaitForSeconds(2);
 
         var secondPanelPos = panels[1].mainCharacterMarker;
 
-        character.isMoving = true;
-        foreach (var f in animateCharacterTo(character, secondPanelPos.position)) yield return f;
-        character.isMoving = false;
+        mainCharacter.isMoving = true;
+        foreach (var f in animateCharacterTo(mainCharacter, secondPanelPos.position)) yield return f;
+        mainCharacter.isMoving = false;
 
-        yield return new WaitForSeconds(2);
+        var secondCharacter = panels[1].currentCharacter;
+        var continueToNextPanel = Interact(mainCharacter, secondCharacter);
 
-        var thirdPanelPos = panels[2].mainCharacterMarker;
-        character.isMoving = true;
-        foreach (var f in animateCharacterTo(character, thirdPanelPos.position)) yield return f;
-        character.isMoving = false;
+        if (continueToNextPanel)
+        {
+            yield return new WaitForSeconds(2);
+
+            var thirdPanelPos = panels[2].mainCharacterMarker;
+            mainCharacter.isMoving = true;
+            foreach (var f in animateCharacterTo(mainCharacter, thirdPanelPos.position)) yield return f;
+            mainCharacter.isMoving = false;
+
+            var thirdCharacter = panels[2].currentCharacter;
+        }
 
         yield return new WaitForSeconds(2);
 
@@ -73,7 +82,21 @@ public class GameManager : MonoBehaviour
     void AddEnding(string description)
     {
         var ending = Instantiate(endingPrefab, new Vector3(0, 0, 10), Quaternion.identity);
-        var tmp = ending.GetComponentInChildren<TextMeshProUGUI>();
+        var tmp = ending.GetComponentInChildren<TextMeshPro>();
         tmp.text = description;
+    }
+
+    bool Interact(Character main, Character other)
+    {
+        main.Response = Response.love;
+        other.Response = Response.heartbreak;
+
+        main.prop = Prop.fire;
+        other.prop = Prop.key;
+
+        main.SetProp();
+        other.SetProp();
+
+        return true;
     }
 }
