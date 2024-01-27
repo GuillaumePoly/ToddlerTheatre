@@ -8,10 +8,4 @@ public class Character : MonoBehaviour
     public Animator animator;
     public Response? response;
 
-    public bool isMoving;
-
-    void Update()
-    {
-        animator.SetBool("isMoving", isMoving);
-    }
 }
