@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 4524040183482283410, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
+      propertyPath: m_PropSwitchVFX
+      value: 
+      objectReference: {fileID: 1359297488740933238, guid: 5b2833c14241f204484bf7783ca64ccb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
