@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public List<StoryPanel> panels;
     public GameObject endingPrefab;
 
+    public AudioManager audioManager;
+
     public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
     private bool _isPlaying;
@@ -54,7 +56,8 @@ public class GameManager : MonoBehaviour
         ending = Interact(character, secondCharacter);
 
         if (ending == null)
-        {yield return new WaitForSeconds(1);
+        {
+            yield return new WaitForSeconds(1);
             character.animator.SetBool("IsAttacking", false);
             yield return new WaitForSeconds(2);
             var thirdPanelPos = panels[2].mainCharacterMarker;
@@ -89,6 +92,17 @@ public class GameManager : MonoBehaviour
 
     void AddEnding(Story story)
     {
+        var audioType = story.audience switch
+        {
+            AudienceResponse.clap => AudioManager.AudioType.CrowdCheering,
+            AudienceResponse.laughing => AudioManager.AudioType.CrowdLaughing,
+            AudienceResponse.boo => AudioManager.AudioType.CrowdLaughing,
+            _ => AudioManager.AudioType.CrowdCheering,
+            //AudienceResponse.awww => throw new NotImplementedException(),
+            //AudienceResponse.horrifying => throw new NotImplementedException(),
+        };
+        audioManager.PlaySoundGlobal(audioManager.GetAudio(audioType), 0.9f, 1.1f, 0.8f, 1f);
+
         var ending = Instantiate(endingPrefab, new Vector3(0, 0, 10), Quaternion.identity);
         var tmp = ending.GetComponentInChildren<TextMeshProUGUI>();
         tmp.text = story.title;

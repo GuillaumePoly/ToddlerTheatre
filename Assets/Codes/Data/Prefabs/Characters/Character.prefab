@@ -321,10 +321,12 @@ MonoBehaviour:
   fire: {fileID: 21300000, guid: be4864f7e129c7e4b9848d1c8b4e9171, type: 3}
   lightning: {fileID: 21300000, guid: 1570c87832d773049a5d6aef2f4c5bca, type: 3}
   key: {fileID: 21300000, guid: 4426fa4c573d7df438e027859ddde9df, type: 3}
+  magic: {fileID: 21300000, guid: 024bac411e6252b4fad400ef90164af8, type: 3}
   characterRenderer: {fileID: 2206997228461294274}
   responseRenderer: {fileID: 979970573314705467}
   propRenderer: {fileID: 2900434698683255329}
   m_PropSwitchVFX: {fileID: 0}
+  m_DisableVFX: 0
 --- !u!95 &2742423435783544670
 Animator:
   serializedVersion: 5

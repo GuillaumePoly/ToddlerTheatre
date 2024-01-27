@@ -63,19 +63,7 @@ PrefabInstance:
     - target: {fileID: 2206997228461294274, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d043d54a7eee2fd42b3b2562970e77bb, type: 3}
-    - target: {fileID: 2206997228461294274, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206997228461294274, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2206997228461294274, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 5c995a2fd3accbb4fa34bc783db3d989, type: 3}
     - target: {fileID: 2447177857334067050, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.05
@@ -98,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4524040183482283410, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: type
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4524040183482283410, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: m_PropSwitchVFX

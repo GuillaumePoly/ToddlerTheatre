@@ -157,6 +157,7 @@ MonoBehaviour:
   - {fileID: 1585693883}
   - {fileID: 1481543762}
   endingPrefab: {fileID: 4470025459224575588, guid: f35ce14464eb8154cb409e9d6c461d92, type: 3}
+  audioManager: {fileID: 2039959307}
 --- !u!4 &87571620
 Transform:
   m_ObjectHideFlags: 0

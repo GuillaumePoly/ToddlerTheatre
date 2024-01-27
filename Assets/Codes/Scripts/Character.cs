@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     public Sprite fire;
     public Sprite lightning;
     public Sprite key;
+    public Sprite magic;
 
     public SpriteRenderer characterRenderer;
     public SpriteRenderer responseRenderer;
@@ -103,6 +104,7 @@ public class Character : MonoBehaviour
             global::Prop.fire => fire,
             global::Prop.key => key,
             global::Prop.dress => dress,
+            global::Prop.magic => magic,
             _ => null,
         };
     }
