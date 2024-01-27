@@ -88,14 +88,19 @@ public class GameManager : MonoBehaviour
 
     bool Interact(Character main, Character other)
     {
-        main.Response = Response.love;
-        other.Response = Response.heartbreak;
+        if (main.Prop == Prop.sword)
+        {
+            main.Response = Response.love;
+            other.Die();
+        }
+        else
+        {
+            main.Response = Response.love;
+            other.Response = Response.heartbreak;
+        }
 
-        main.prop = Prop.fire;
-        other.prop = Prop.key;
-
-        main.SetProp();
-        other.SetProp();
+        main.Prop = Prop.fire;
+        other.Prop = null;
 
         return true;
     }

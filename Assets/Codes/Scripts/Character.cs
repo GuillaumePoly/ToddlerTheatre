@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.Properties;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -10,7 +6,7 @@ public class Character : MonoBehaviour
     public Animator animator;
 
     private Response? _response;
-    public Prop prop;
+    private Prop? _prop;
 
     public Sprite heart;
     public Sprite heartbreak;
@@ -29,6 +25,9 @@ public class Character : MonoBehaviour
 
     public bool isMoving;
 
+    bool isDead;
+    float deathProgress;
+
     public Response? Response
     {
         get => _response; set
@@ -38,9 +37,39 @@ public class Character : MonoBehaviour
         }
     }
 
+    public Prop? Prop
+    {
+        get => _prop; set
+        {
+            _prop = value;
+            SetProp();
+        }
+    }
+
+    void Start()
+    {
+        switch (type)
+        {
+            case CharacterType.Knight:
+                Prop = global::Prop.sword;
+                break;
+            case CharacterType.Dragon:
+                Prop = global::Prop.fire;
+                break;
+            case CharacterType.Princess:
+                Prop = global::Prop.dress;
+                break;
+        }
+    }
+
     void Update()
     {
         animator.SetBool("isMoving", isMoving);
+
+        if (isDead)
+        {
+            UpdateDeathProgress();
+        }
     }
 
     private void SetResponse()
@@ -65,9 +94,9 @@ public class Character : MonoBehaviour
         };
     }
 
-    public void SetProp()
+    private void SetProp()
     {
-        switch (prop)
+        switch (Prop)
         {
             case global::Prop.lightning:
                 propRenderer.sprite = lightning;
@@ -84,6 +113,23 @@ public class Character : MonoBehaviour
             case global::Prop.dress:
                 propRenderer.sprite = dress;
                 break;
+        }
+    }
+
+    public void Die()
+    {
+        Response = global::Response.death;
+        isDead = true;
+    }
+
+    void UpdateDeathProgress()
+    {
+        deathProgress += Time.deltaTime;
+        transform.rotation = Quaternion.Lerp(Quaternion.identity, Quaternion.AngleAxis(-90, Vector3.forward), deathProgress);
+        if (deathProgress >= 1)
+        {
+            deathProgress = 1;
+            isDead = false;
         }
     }
 }
