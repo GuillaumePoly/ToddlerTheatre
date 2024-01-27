@@ -4,7 +4,7 @@ public class Character : MonoBehaviour
 {
     public CharacterType type;
     public Animator animator;
-    
+
     private Response? _response;
     private Prop? _prop;
 
@@ -27,6 +27,9 @@ public class Character : MonoBehaviour
     public Sprite lightning;
     public Sprite key;
     public Sprite magic;
+    public Sprite wizard;
+    public Sprite dragon;
+    public Sprite knight;
 
     public SpriteRenderer characterRenderer;
     public SpriteRenderer responseRenderer;
@@ -69,7 +72,7 @@ public class Character : MonoBehaviour
                 break;
         }
     }
-    
+
     private void SetResponse()
     {
         responseRenderer.sprite = Response switch
@@ -96,7 +99,7 @@ public class Character : MonoBehaviour
             var vfx = Instantiate(m_PropSwitchVFX);
             vfx.transform.position = propRenderer.transform.position;
         }
-        
+
         propRenderer.sprite = Prop switch
         {
             global::Prop.lightning => lightning,
@@ -105,6 +108,10 @@ public class Character : MonoBehaviour
             global::Prop.key => key,
             global::Prop.dress => dress,
             global::Prop.magic => magic,
+
+            global::Prop.knight => knight,
+            global::Prop.wizard => wizard,
+            global::Prop.dragon => dragon,
             _ => null,
         };
     }

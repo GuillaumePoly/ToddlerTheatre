@@ -6,4 +6,8 @@ public enum Prop
     key,
     dress,
     magic,
+
+    dragon,
+    knight,
+    wizard,
 }

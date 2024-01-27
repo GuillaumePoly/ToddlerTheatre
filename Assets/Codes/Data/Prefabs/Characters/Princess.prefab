@@ -92,6 +92,22 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3d8a149cda5ffbd47b762cc51a0e4052, type: 2}
+    - target: {fileID: 2900434698683255329, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
+      propertyPath: m_Size.x
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900434698683255329, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
+      propertyPath: m_Size.y
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900434698683255329, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2900434698683255329, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2932181349406181785, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: m_Color.b
       value: 0.73927116

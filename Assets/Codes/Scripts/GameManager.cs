@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
 
     public AudioManager audioManager;
 
+    public Animator leftCurtain;
+    public Animator rightCurtain;
+
     public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
     private bool _isPlaying;
@@ -103,6 +106,8 @@ public class GameManager : MonoBehaviour
         };
         audioManager.PlaySoundGlobal(audioManager.GetAudio(audioType), 0.9f, 1.1f, 0.8f, 1f);
 
+        SetCurtains(closed: true);
+
         var ending = Instantiate(endingPrefab, new Vector3(0, 0, 10), Quaternion.identity);
         var tmp = ending.GetComponentInChildren<TextMeshProUGUI>();
         tmp.text = story.title;
@@ -148,6 +153,10 @@ public class GameManager : MonoBehaviour
 
             // TODO: Handle sparkle prop cases
             case (Prop.dress, CharacterType.Dragon):
+                main.Prop = Prop.dragon;
+                break;
+            case (Prop.dress, CharacterType.Knight):
+                main.Prop = Prop.knight;
                 break;
 
             case (Prop.dress, CharacterType.Wizard):
@@ -286,6 +295,12 @@ public class GameManager : MonoBehaviour
         }
 
         return story;
+    }
+
+    void SetCurtains(bool closed)
+    {
+        leftCurtain.SetBool("close", closed);
+        rightCurtain.SetBool("close", closed);
     }
 }
 

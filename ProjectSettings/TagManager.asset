@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Front Curtains
+    uniqueID: 3935588965
+    locked: 0
   - name: Ending
     uniqueID: 1840630119
     locked: 0
