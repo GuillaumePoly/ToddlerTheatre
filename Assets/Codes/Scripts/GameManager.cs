@@ -54,9 +54,9 @@ public class GameManager : MonoBehaviour
         ending = Interact(character, secondCharacter);
 
         if (ending == null)
-        {
-            yield return new WaitForSeconds(2);
+        {yield return new WaitForSeconds(1);
             character.animator.SetBool("IsAttacking", false);
+            yield return new WaitForSeconds(2);
             var thirdPanelPos = panels[2].mainCharacterMarker;
             character.animator.SetBool("isMoving", true);
             foreach (var f in animateCharacterTo(character, thirdPanelPos.position)) yield return f;
