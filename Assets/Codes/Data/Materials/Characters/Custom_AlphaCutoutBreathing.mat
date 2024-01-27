@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Knigh
+  m_Name: Custom_AlphaCutoutBreathing
   m_Shader: {fileID: 4800000, guid: d2d823442f996cc4e85dc2ef049c667c, type: 3}
-  m_Parent: {fileID: 2100000, guid: 4a5698f99b4e623418e3c75883f393e8, type: 2}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -23,12 +23,28 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SetTexture:
-        m_Texture: {fileID: 2800000, guid: 8d408894754485d43a7994656b8b2b27, type: 3}
+        m_Texture: {fileID: 2800000, guid: 79f0c66554bf68d42839b24581ca15de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BreahtIntensity: 0.698
-    m_Colors: []
+    - PixelSnap: 0
+    - _BreahtIntensity: 0.1499996
+    - _BreathSpeed: 3.1129258
+    m_Colors:
+    - _ChildHeightMinMax: {r: -0.5, g: 0.5, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

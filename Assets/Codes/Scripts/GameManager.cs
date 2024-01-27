@@ -15,13 +15,6 @@ public class GameManager : MonoBehaviour
 
     private bool _isPlaying;
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
 
     public void PlayScene()
     {
