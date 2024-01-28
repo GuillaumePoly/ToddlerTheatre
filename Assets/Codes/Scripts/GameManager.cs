@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     private bool startVignette;
     private float vignetteDelta = 0;
 
+    public AudioSource walkingSound;
+
     void Update()
     {
         if (isReadyToPlay)
@@ -93,9 +95,11 @@ public class GameManager : MonoBehaviour
 
         var secondCharacter = panels[1].currentCharacter;
 
+        walkingSound.Play();
         character.animator.SetBool("isMoving", true);
         foreach (var f in animateCharacterTo(character, secondPanelPos.position)) yield return f;
         character.animator.SetBool("isMoving", false);
+        walkingSound.Stop();
 
         Story ending;
 
@@ -111,9 +115,12 @@ public class GameManager : MonoBehaviour
             character.animator.SetBool("IsAttacking", false);
             yield return new WaitForSeconds(2);
             var thirdPanelPos = panels[2].mainCharacterMarker;
+
+            walkingSound.Play();
             character.animator.SetBool("isMoving", true);
             foreach (var f in animateCharacterTo(character, thirdPanelPos.position)) yield return f;
             character.animator.SetBool("isMoving", false);
+            walkingSound.Stop();
 
             var thirdCharacter = panels[2].currentCharacter;
             ending = Resolve(character, thirdCharacter);

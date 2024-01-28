@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] m_CrowdCheering;
     public AudioClip[] m_CrowdShocked;
     public AudioClip[] m_CrowdAww;
-    
+
 
     [Title("Interactions")]
     public AudioClip[] m_KnightInteraction;
@@ -25,6 +25,9 @@ public class AudioManager : MonoBehaviour
 
     [Title("TheatreSounds")]
     public AudioClip[] m_CurtainsInteraction;
+
+    [Title("Walking")]
+    public AudioClip[] m_Walking;
 
     [Title("Clics")]
     public AudioClip[] m_Button;
@@ -43,10 +46,11 @@ public class AudioManager : MonoBehaviour
         PrincessInteraction,
         DragonInteraction,
         WizardInteraction,
+        Walking,
         Button,
         Grab,
         Release,
-        Curtains, 
+        Curtains,
         CrowdShocked,
         Aww
     }
@@ -110,6 +114,7 @@ public class AudioManager : MonoBehaviour
             case AudioType.PrincessInteraction: return m_PrincessInteraction;
             case AudioType.DragonInteraction: return m_DragonInteraction;
             case AudioType.WizardInteraction: return m_WizardInteraction;
+            case AudioType.Walking: return m_Walking;
             case AudioType.Button: return m_Button;
             case AudioType.Grab: return m_Grab;
             case AudioType.Release: return m_Release;
@@ -120,5 +125,5 @@ public class AudioManager : MonoBehaviour
         return null;
     }
 
-    
+
 }
