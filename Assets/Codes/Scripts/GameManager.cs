@@ -178,7 +178,8 @@ public class GameManager : MonoBehaviour
                 break;
 
             case (Prop.sparkle, CharacterType.Wizard):
-                // TODO frog
+                main.MakeFrog();
+                other.Response = Response.magic;
                 endStory = new Story()
                 {
                     audience = AudienceResponse.boo,

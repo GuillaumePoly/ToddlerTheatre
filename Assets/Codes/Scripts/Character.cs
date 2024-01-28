@@ -42,6 +42,9 @@ public class Character : MonoBehaviour
 
     public GameObject m_PropSwitchVFX;
     public bool m_DisableVFX;
+
+    public GameObject frogHead;
+
     public Response? Response
     {
         get => _response; set
@@ -60,6 +63,11 @@ public class Character : MonoBehaviour
             _prop = value;
             SetProp();
         }
+    }
+
+    public void MakeFrog()
+    {
+        frogHead.SetActive(true);
     }
 
     void Start()
