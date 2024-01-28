@@ -11,6 +11,7 @@ Shader "Custom/AlphaCutoutBreathing"
 		_BreahtIntensity("BreahtIntensity", Range( 0 , 1)) = 0.1
 		_ChildHeightMinMax("ChildHeightMinMax", Vector) = (0.58,0.84,0,0)
 		_BreathSpeed("BreathSpeed", Range( 0 , 5)) = 1
+		[Toggle]_IsBreathing("IsBreathing", Float) = 0
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 	}
@@ -66,6 +67,7 @@ Shader "Custom/AlphaCutoutBreathing"
 			uniform float _EnableExternalAlpha;
 			uniform sampler2D _MainTex;
 			uniform sampler2D _AlphaTex;
+			uniform float _IsBreathing;
 			uniform float2 _ChildHeightMinMax;
 			uniform float _BreathSpeed;
 			uniform float _BreahtIntensity;
@@ -83,7 +85,7 @@ Shader "Custom/AlphaCutoutBreathing"
 				float2 appendResult43 = (float2(texCoord54.x , ( ( 0.5 * texCoord54.y ) - ( smoothstepResult35 * ( texCoord54.y + ( sin( ( _Time.y * _BreathSpeed ) ) * _BreahtIntensity ) ) ) )));
 				
 				
-				IN.vertex.xyz += float3( appendResult43 ,  0.0 ); 
+				IN.vertex.xyz += float3( (( _IsBreathing )?( appendResult43 ):( float2( 0,0 ) )) ,  0.0 ); 
 				OUT.vertex = UnityObjectToClipPos(IN.vertex);
 				OUT.texcoord = IN.texcoord;
 				OUT.color = IN.color * _Color;
@@ -127,7 +129,6 @@ Shader "Custom/AlphaCutoutBreathing"
 }
 /*ASEBEGIN
 Version=19202
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;19;226,-132;Float;False;True;-1;2;ASEMaterialInspector;0;10;Custom/AlphaCutoutBreathing;0f8ba0101102bb14ebf021ddadce9b49;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;2;False;True;3;1;False;;10;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;0;;0;0;Standard;0;0;1;True;False;;False;0
 Node;AmplifyShaderEditor.SmoothstepOpNode;35;-595.8167,283.1148;Inherit;True;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;38;-582.8896,505.122;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;39;-900.4196,515.1826;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -135,19 +136,19 @@ Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;-331.9166,424.8148;Inherit;True
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;42;-485.34,166.7823;Inherit;False;2;2;0;FLOAT;0.5;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.DynamicAppendNode;43;41.58271,251.4052;Inherit;False;FLOAT2;4;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;44;-99.23995,279.8823;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector2Node;36;-1046.123,284.6094;Inherit;False;Property;_ChildHeightMinMax;ChildHeightMinMax;1;0;Create;True;0;0;0;False;0;False;0.58,0.84;0,1;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;36;-1046.123,284.6094;Inherit;False;Property;_ChildHeightMinMax;ChildHeightMinMax;1;0;Create;True;0;0;0;False;0;False;0.58,0.84;-0.5,0.5;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SinOpNode;47;-1066.785,513.5155;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;34;-1226.25,592.9331;Inherit;False;Property;_BreahtIntensity;BreahtIntensity;0;0;Create;True;0;0;0;False;0;False;0.1;0.735436;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;34;-1226.25,592.9331;Inherit;False;Property;_BreahtIntensity;BreahtIntensity;0;0;Create;True;0;0;0;False;0;False;0.1;0.1499996;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;49;-1224.785,493.5155;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;46;-1572.063,540.5609;Inherit;False;Property;_BreathSpeed;BreathSpeed;2;0;Create;True;0;0;0;False;0;False;1;0.68;0;5;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;46;-1572.063,540.5609;Inherit;False;Property;_BreathSpeed;BreathSpeed;2;0;Create;True;0;0;0;False;0;False;1;3.112926;0;5;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;48;-1424.785,457.5155;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.VertexColorNode;32;-258.53,-103.8082;Inherit;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;33;2.57959,-123.2458;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SamplerNode;52;-136.7849,-324.4845;Inherit;True;Property;_TextureSample0;Texture Sample 0;3;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;53;-423.1357,-215.0285;Inherit;False;0;0;_MainTex;Shader;False;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TextureCoordinatesNode;54;-879.7565,-0.2251434;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-WireConnection;19;0;52;0
-WireConnection;19;1;43;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;19;435.2999,-108.6;Float;False;True;-1;2;ASEMaterialInspector;0;10;Custom/AlphaCutoutBreathing;0f8ba0101102bb14ebf021ddadce9b49;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;2;False;True;3;1;False;;10;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;True;2;False;;False;False;True;5;Queue=Transparent=Queue=0;IgnoreProjector=True;RenderType=Transparent=RenderType;PreviewType=Plane;CanUseSpriteAtlas=True;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;0;;0;0;Standard;0;0;1;True;False;;False;0
+Node;AmplifyShaderEditor.ToggleSwitchNode;55;133.4185,79.30566;Inherit;False;Property;_IsBreathing;IsBreathing;3;0;Create;True;0;0;0;False;0;False;0;True;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
 WireConnection;35;0;54;2
 WireConnection;35;1;36;1
 WireConnection;35;2;36;2
@@ -167,5 +168,8 @@ WireConnection;49;0;48;0
 WireConnection;49;1;46;0
 WireConnection;33;1;32;0
 WireConnection;52;0;53;0
+WireConnection;19;0;52;0
+WireConnection;19;1;55;0
+WireConnection;55;1;43;0
 ASEEND*/
-//CHKSM=B9EF5C75BE1D5275C8F1CE82E042BA76181F22D1
+//CHKSM=5235FA343328939651CA7FE2DD81D96BAFBF53E3

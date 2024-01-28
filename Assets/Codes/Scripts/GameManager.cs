@@ -100,9 +100,8 @@ public class GameManager : MonoBehaviour
             AudienceResponse.clap => AudioManager.AudioType.CrowdCheering,
             AudienceResponse.laughing => AudioManager.AudioType.CrowdLaughing,
             AudienceResponse.boo => AudioManager.AudioType.CrowdBooing,
-            _ => AudioManager.AudioType.CrowdCheering,
-            //AudienceResponse.awww => throw new NotImplementedException(),
-            //AudienceResponse.horrifying => throw new NotImplementedException(),
+            AudienceResponse.horrifying => AudioManager.AudioType.CrowdShocked,
+            AudienceResponse.awww => AudioManager.AudioType.Aww,
         };
         audioManager.PlaySoundGlobal(audioManager.GetAudio(audioType), 0.9f, 1.1f, 0.8f, 1f);
 

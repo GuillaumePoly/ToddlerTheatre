@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] m_CrowdBooing;
     public AudioClip[] m_CrowdLaughing;
     public AudioClip[] m_CrowdCheering;
+    public AudioClip[] m_CrowdShocked;
+    public AudioClip[] m_CrowdAww;
 
     [Title("Interactions")]
     public AudioClip[] m_KnightInteraction;
@@ -43,7 +45,9 @@ public class AudioManager : MonoBehaviour
         Button,
         Grab,
         Release,
-        Curtains
+        Curtains, 
+        CrowdShocked,
+        Aww
     }
     private void OnEnable()
     {
@@ -109,11 +113,11 @@ public class AudioManager : MonoBehaviour
             case AudioType.Grab: return m_Grab;
             case AudioType.Release: return m_Release;
             case AudioType.Curtains: return m_CurtainsInteraction;
-
+            case AudioType.CrowdShocked: return m_CrowdShocked;
+            case AudioType.Aww: return m_CrowdAww;
         }
         return null;
     }
 
-
-
+    
 }
