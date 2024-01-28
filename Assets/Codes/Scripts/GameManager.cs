@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         if (isReadyToPlay)
         {
+            StartCoroutine(StartVignette());
             PlayScene();
         }
     }
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         if (_isPlaying) return;
         m_PlayButton.SetActive(false);
-        StartCoroutine(StartVignette());
+        
         foreach (var panel in panels) panel.isLocked = true;
 
         _isPlaying = true;
