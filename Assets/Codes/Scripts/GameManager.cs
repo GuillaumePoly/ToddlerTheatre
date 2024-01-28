@@ -29,6 +29,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TryPlay()
+    {
+        if (isReadyToPlay)
+        {
+            PlayScene();
+        }
+    }
 
     public void PlayScene()
     {
