@@ -34,7 +34,7 @@ public class StoryPanel : MonoBehaviour
     {
         if (isLocked) return;
 
-        if (InputReceiver.m_ClickedPrevious && !InputReceiver.m_Clicked)
+        if (InputReceiver.m_ReleasedThisFrame)
         {
             if (_hoverCharacter != null && IsFree)
             {
@@ -50,6 +50,10 @@ public class StoryPanel : MonoBehaviour
                     _currentCharacter.Prop = null;
                     _currentCharacter.m_DisableVFX = false;
                 }
+                else
+                {
+                    _currentCharacter.SetStartProp();
+                }
             }
 
             _hoverCharacter = null;
@@ -60,6 +64,11 @@ public class StoryPanel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (other.GetComponent<Character>() == currentCharacter)
+            {
+                _currentCharacter = null;
+            }
+
             _hoverCharacter = null;
         }
     }

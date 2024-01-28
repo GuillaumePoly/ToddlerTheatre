@@ -74,6 +74,11 @@ public class Character : MonoBehaviour
 
     void Start()
     {
+        SetStartProp();
+    }
+
+    public void SetStartProp()
+    {
         Prop = type switch
         {
             CharacterType.Knight => global::Prop.sword,
