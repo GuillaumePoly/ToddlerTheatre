@@ -19,6 +19,8 @@ public class Character : MonoBehaviour
     public Sprite books;
     public Sprite hatchling;
     public Sprite chef;
+    public Sprite husband;
+    public Sprite wife;
 
     public Sprite sword;
     public Sprite charm;
@@ -88,6 +90,8 @@ public class Character : MonoBehaviour
             global::Response.book => books,
             global::Response.hatchling => hatchling,
             global::Response.chef => chef,
+            global::Response.husband => husband,
+            global::Response.wife => wife,
             _ => null,
         };
     }

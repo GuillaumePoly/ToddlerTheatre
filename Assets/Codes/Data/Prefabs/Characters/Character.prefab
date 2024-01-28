@@ -315,6 +315,8 @@ MonoBehaviour:
   books: {fileID: 21300000, guid: 1fe609792c45ce649898de7c712a8cc5, type: 3}
   hatchling: {fileID: 21300000, guid: e58e0e782a6779b4eb84b0240cd3aa1e, type: 3}
   chef: {fileID: 21300000, guid: 44dd48fdf0b7d9049830ea13ea9c41ed, type: 3}
+  husband: {fileID: 21300000, guid: 9b42a1213cad36c4a8ecdf3cb8e1f30b, type: 3}
+  wife: {fileID: 21300000, guid: efb714c00b9f8284c8aab48cc7643d15, type: 3}
   sword: {fileID: 21300000, guid: e0e3107ee994c9843b61eba60e197ba0, type: 3}
   charm: {fileID: 21300000, guid: 4e4221baebc370641977ba9fbd00adf7, type: 3}
   dress: {fileID: 21300000, guid: 2c1f329ae7644b044846927a8b0886b8, type: 3}
@@ -322,9 +324,9 @@ MonoBehaviour:
   lightning: {fileID: 21300000, guid: 1570c87832d773049a5d6aef2f4c5bca, type: 3}
   key: {fileID: 21300000, guid: 4426fa4c573d7df438e027859ddde9df, type: 3}
   magic: {fileID: 21300000, guid: 024bac411e6252b4fad400ef90164af8, type: 3}
-  wizard: {fileID: 21300000, guid: 5c995a2fd3accbb4fa34bc783db3d989, type: 3}
-  dragon: {fileID: 21300000, guid: cc3d6262beb59974eb3e4070f73049f3, type: 3}
-  knight: {fileID: 21300000, guid: 8d408894754485d43a7994656b8b2b27, type: 3}
+  wizard: {fileID: 21300000, guid: c16a29708ff961f4f931e2f9eeb53635, type: 3}
+  dragon: {fileID: 21300000, guid: fad44c4b806e2bc488a92e314b06f243, type: 3}
+  knight: {fileID: 21300000, guid: ad3ad171098f761488041081f777aa5d, type: 3}
   characterRenderer: {fileID: 2206997228461294274}
   responseRenderer: {fileID: 979970573314705467}
   propRenderer: {fileID: 2900434698683255329}

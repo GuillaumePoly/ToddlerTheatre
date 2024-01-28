@@ -6,6 +6,8 @@ public enum Response
     yum,
     book,
     teacher,
+    husband,
+    wife,
     hatchling,
     heartbreak,
     swooning,

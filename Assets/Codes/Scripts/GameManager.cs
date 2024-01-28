@@ -120,10 +120,15 @@ public class GameManager : MonoBehaviour
         switch ((mainProp: main.Prop, otherType: other.type))
         {
             // Knight
-            case (Prop.sword, CharacterType.Dragon or CharacterType.Princess):
+            case (Prop.sword, CharacterType.Dragon):
                 main.Prop = Prop.key;
                 other.Die();
                 break;
+            case (Prop.sword, CharacterType.Princess):
+                main.Prop = Prop.dress;
+                other.Die();
+                break;
+
             case (Prop.sword, CharacterType.Wizard):
                 main.Prop = null;
                 main.Response = Response.confused;
@@ -134,24 +139,23 @@ public class GameManager : MonoBehaviour
                 break;
 
             // Dragon
+            case (Prop.fire, CharacterType.Knight):
+                main.Prop = Prop.sword;
+                other.Die();
+                break;
             case (Prop.fire, CharacterType.Princess):
                 main.Prop = null;
+                other.Die();
                 endStory = new Story()
                 {
                     audience = AudienceResponse.boo
                 };
                 break;
-            case (Prop.fire, CharacterType.Knight):
-                main.Prop = Prop.sword;
-                other.Die();
-                break;
             case (Prop.fire, CharacterType.Wizard):
-                // Fix this?
                 main.Prop = Prop.magic;
                 other.Die();
                 break;
 
-            // TODO: Handle sparkle prop cases
             case (Prop.dress, CharacterType.Dragon):
                 main.Prop = Prop.dragon;
                 break;
@@ -202,6 +206,24 @@ public class GameManager : MonoBehaviour
             // Knight Stories
             case (CharacterType.Knight, Prop.key, CharacterType.Princess):
                 mainProp = null;
+                mainResponse = Response.husband;
+                otherResponse = Response.wife;
+                story = new Story
+                {
+                    audience = AudienceResponse.clap,
+                };
+                break;
+            case (CharacterType.Knight, Prop.key, CharacterType.Wizard):
+                mainProp = null;
+                mainResponse = Response.husband;
+                otherResponse = Response.husband;
+                story = new Story
+                {
+                    audience = AudienceResponse.awww,
+                };
+                break;
+            case (CharacterType.Knight, Prop.dress, CharacterType.Dragon):
+                mainProp = null;
                 mainResponse = Response.love;
                 otherResponse = Response.love;
                 story = new Story
@@ -209,19 +231,10 @@ public class GameManager : MonoBehaviour
                     audience = AudienceResponse.awww,
                 };
                 break;
-            case (CharacterType.Knight, Prop.key, CharacterType.Wizard):
+            case (CharacterType.Knight, Prop.dress, CharacterType.Wizard):
                 mainProp = null;
-                mainResponse = Response.book;
-                otherResponse = Response.teacher;
-                story = new Story
-                {
-                    audience = AudienceResponse.clap,
-                };
-                break;
-            case (CharacterType.Knight, Prop.dress, CharacterType.Dragon or CharacterType.Wizard):
-                mainProp = null;
-                mainResponse = Response.love;
-                otherResponse = Response.love;
+                mainResponse = Response.husband;
+                otherResponse = Response.husband;
                 story = new Story
                 {
                     audience = AudienceResponse.awww,
@@ -240,7 +253,7 @@ public class GameManager : MonoBehaviour
                 break;
             case (CharacterType.Dragon, Prop.sword, CharacterType.Wizard):
                 mainProp = null;
-                mainResponse = Response.love;
+                mainResponse = Response.hatchling;
                 otherResponse = Response.love;
                 story = new Story
                 {
@@ -267,7 +280,37 @@ public class GameManager : MonoBehaviour
                 break;
 
             // Princess stories
-            // TODO
+            case (CharacterType.Princess, Prop.knight, CharacterType.Dragon):
+                // TODO
+                break;
+            case (CharacterType.Princess, Prop.knight, CharacterType.Wizard):
+                mainProp = null;
+                mainResponse = Response.love;
+                otherResponse = Response.love;
+                story = new Story
+                {
+                    audience = AudienceResponse.clap,
+                };
+                break;
+            case (CharacterType.Princess, Prop.dragon, CharacterType.Knight):
+                mainProp = null;
+                mainResponse = Response.love;
+                otherResponse = Response.love;
+                story = new Story
+                {
+                    audience = AudienceResponse.clap,
+                };
+                break;
+            case (CharacterType.Princess, Prop.dragon, CharacterType.Wizard):
+                mainProp = null;
+                mainResponse = Response.chef;
+                otherResponse = Response.chef;
+                story = new Story
+                {
+                    audience = AudienceResponse.clap,
+                };
+                break;
+
 
             // Wizard stories
             case (CharacterType.Wizard, Prop.key, CharacterType.Princess):
@@ -279,8 +322,34 @@ public class GameManager : MonoBehaviour
                     audience = AudienceResponse.clap,
                 };
                 break;
-
-
+            case (CharacterType.Wizard, Prop.key, CharacterType.Knight):
+                // TODO
+                mainProp = null;
+                mainResponse = Response.teacher;
+                otherResponse = Response.book;
+                story = new Story
+                {
+                    audience = AudienceResponse.clap,
+                };
+                break;
+            case (CharacterType.Wizard, Prop.dress, CharacterType.Knight):
+                mainProp = null;
+                mainResponse = Response.husband;
+                otherResponse = Response.husband;
+                story = new Story
+                {
+                    audience = AudienceResponse.awww,
+                };
+                break;
+            case (CharacterType.Wizard, Prop.dress, CharacterType.Dragon):
+                mainProp = null;
+                mainResponse = Response.love;
+                otherResponse = Response.hatchling;
+                story = new Story
+                {
+                    audience = AudienceResponse.laughing,
+                };
+                break;
         };
 
         main.Prop = mainProp;
