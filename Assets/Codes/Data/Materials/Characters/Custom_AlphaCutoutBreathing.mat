@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _ISBREATHING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -43,7 +44,8 @@ Material:
     m_Floats:
     - PixelSnap: 0
     - _BreahtIntensity: 0.1499996
-    - _BreathSpeed: 3.1129258
+    - _BreathSpeed: 4.63
+    - _IsBreathing: 1
     m_Colors:
     - _ChildHeightMinMax: {r: -0.5, g: 0.5, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
