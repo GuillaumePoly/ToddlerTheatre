@@ -24838,7 +24838,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 59def786ffa896b41b6923ded0b0941a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25007,7 +25007,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3bec27ab6131f7e43987fee45b5d6602, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49506,7 +49506,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.018849619, y: 0.009588393, z: -0.9986657, w: 0.047112662}
   m_LocalPosition: {x: -0.34, y: 4.56, z: -0.000000049869833}
-  m_LocalScale: {x: 0.32840982, y: 0.69238645, z: 0.69238645}
+  m_LocalScale: {x: 0.51126844, y: 1.0779072, z: 1.0779072}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 493530709702559452}
@@ -49561,7 +49561,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7005985905312522635
 GameObject:
@@ -59452,7 +59452,7 @@ Transform:
   m_GameObject: {fileID: 8516009212075523175}
   serializedVersion: 2
   m_LocalRotation: {x: 0.018849619, y: 0.009588393, z: -0.9986657, w: 0.047112662}
-  m_LocalPosition: {x: -0.34, y: 4.56, z: -0.000000049869833}
+  m_LocalPosition: {x: -0.27, y: 3.59, z: -0}
   m_LocalScale: {x: 0.32840982, y: 0.69238645, z: 0.69238645}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59508,7 +59508,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &6679510191744185415
 PrefabInstance:
@@ -59532,7 +59532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401929588973217960, guid: 8339902361f057b45a0706175592eee7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 6401929588973217960, guid: 8339902361f057b45a0706175592eee7, type: 3}
       propertyPath: m_LocalPosition.z

@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -17,9 +18,15 @@ public class GameManager : MonoBehaviour
     public Animator leftCurtain;
     public Animator rightCurtain;
 
+    public GameObject m_PlayButton;
+
     public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
     private bool _isPlaying;
+
+    public PostProcessProfile pp;
+    public float m_MaxVignette;
+    public Vignette v;
 
     void Update()
     {
@@ -40,18 +47,31 @@ public class GameManager : MonoBehaviour
     public void PlayScene()
     {
         if (_isPlaying) return;
-
+        m_PlayButton.SetActive(false);
+        StartCoroutine(StartVignette());
         foreach (var panel in panels) panel.isLocked = true;
 
         _isPlaying = true;
         StartCoroutine(nameof(AnimateMainCharacter));
     }
-
+    IEnumerator StartVignette()
+    {
+       
+        float t = 0;
+        if (t <= m_MaxVignette)
+        {
+            t += Time.deltaTime;
+        }
+        pp.GetSetting<Vignette>().intensity.value = t;
+        yield return null;
+    }
     IEnumerator AnimateMainCharacter()
     {
         var character = panels.First().currentCharacter;
         yield return new WaitForSeconds(2);
 
+      
+        
         var secondPanelPos = panels[1].mainCharacterMarker;
 
         var secondCharacter = panels[1].currentCharacter;
