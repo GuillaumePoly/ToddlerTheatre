@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject m_PlayButton;
 
+    public GameObject music;
+
     public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
     private bool _isPlaying;
@@ -33,6 +35,11 @@ public class GameManager : MonoBehaviour
     private float vignetteDelta = 0;
 
     public AudioSource walkingSound;
+
+    void Start()
+    {
+        DontDestroyOnLoad(music);
+    }
 
     void Update()
     {
@@ -63,7 +70,7 @@ public class GameManager : MonoBehaviour
             startVignette = false;
             vignetteDelta = m_MaxVignette;
         }
-        
+
     }
     public void TryPlay()
     {
@@ -83,7 +90,7 @@ public class GameManager : MonoBehaviour
         _isPlaying = true;
         StartCoroutine(nameof(AnimateMainCharacter));
     }
-   
+
     IEnumerator AnimateMainCharacter()
     {
         var character = panels.First().currentCharacter;

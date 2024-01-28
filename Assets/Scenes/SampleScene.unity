@@ -161,6 +161,7 @@ MonoBehaviour:
   leftCurtain: {fileID: 5618830553961066595}
   rightCurtain: {fileID: 990033104}
   m_PlayButton: {fileID: 389800095}
+  music: {fileID: 232514108}
   pp: {fileID: 177745081}
   m_MaxVignette: 0.35
   walkingSound: {fileID: 1510682499}
@@ -265,7 +266,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 36ab50043e89bad4bb1a7d31eb4b2f15, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
