@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour
     public Animator rightCurtain;
 
     public GameObject m_PlayButton;
-
-    public GameObject music;
+    
 
     public bool isReadyToPlay => panels.All(p => !p.IsFree);
 
@@ -35,11 +34,7 @@ public class GameManager : MonoBehaviour
     private float vignetteDelta = 0;
 
     public AudioSource walkingSound;
-
-    void Start()
-    {
-        DontDestroyOnLoad(music);
-    }
+    
 
     void Update()
     {
