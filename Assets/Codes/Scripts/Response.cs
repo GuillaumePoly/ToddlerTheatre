@@ -15,4 +15,6 @@ public enum Response
     swooning,
     death,
     confused,
+    rollercoaster,
+    balloon,
 }

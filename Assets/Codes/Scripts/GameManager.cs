@@ -308,10 +308,13 @@ public class GameManager : MonoBehaviour
 
             // Princess stories
             case (CharacterType.Princess, Prop.knight, CharacterType.Dragon):
-                // TODO
+                mainProp = Prop.knight;
+                mainResponse = Response.love;
+                otherResponse = Response.heartbreak;
+                otherDies = true;
                 story = new Story
                 {
-                    audience = AudienceResponse.awww,
+                    audience = AudienceResponse.horrifying,
                     title = "Heartbroken",
                 };
                 break;
@@ -359,10 +362,9 @@ public class GameManager : MonoBehaviour
                 };
                 break;
             case (CharacterType.Wizard, Prop.key, CharacterType.Knight):
-                // TODO
                 mainProp = null;
-                mainResponse = Response.teacher;
-                otherResponse = Response.book;
+                mainResponse = Response.rollercoaster;
+                otherResponse = Response.balloon;
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
@@ -395,7 +397,11 @@ public class GameManager : MonoBehaviour
         main.Response = mainResponse;
         if (otherDies)
         {
-            other.Die();
+            if (otherResponse != null)
+            {
+                other.Response = otherResponse;
+            }
+            other.Die(setResponse: otherResponse == null);
         }
         else
         {

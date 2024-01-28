@@ -319,6 +319,8 @@ MonoBehaviour:
   husband: {fileID: 21300000, guid: 9b42a1213cad36c4a8ecdf3cb8e1f30b, type: 3}
   wife: {fileID: 21300000, guid: efb714c00b9f8284c8aab48cc7643d15, type: 3}
   confounded: {fileID: 21300000, guid: 01bd072a7c977984bae6e1e045c85b7b, type: 3}
+  rollercoaster: {fileID: 21300000, guid: d7eec12482884b04dabd308bfaed9ada, type: 3}
+  balloon: {fileID: 21300000, guid: f2a37382b123831468cd0fc1d50b767d, type: 3}
   sword: {fileID: 21300000, guid: e0e3107ee994c9843b61eba60e197ba0, type: 3}
   charm: {fileID: 21300000, guid: 4e4221baebc370641977ba9fbd00adf7, type: 3}
   dress: {fileID: 21300000, guid: 2c1f329ae7644b044846927a8b0886b8, type: 3}
