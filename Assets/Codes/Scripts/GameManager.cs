@@ -159,16 +159,17 @@ public class GameManager : MonoBehaviour
                 other.Die();
                 break;
 
-            case (Prop.dress, CharacterType.Dragon):
+            // Princess
+            case (Prop.sparkle, CharacterType.Dragon):
                 main.Prop = Prop.dragon;
-                Destroy(other);
+                Destroy(other.gameObject);
                 break;
-            case (Prop.dress, CharacterType.Knight):
+            case (Prop.sparkle, CharacterType.Knight):
                 main.Prop = Prop.knight;
-                Destroy(other);
+                Destroy(other.gameObject);
                 break;
 
-            case (Prop.dress, CharacterType.Wizard):
+            case (Prop.sparkle, CharacterType.Wizard):
                 // TODO
                 endStory = new Story()
                 {
