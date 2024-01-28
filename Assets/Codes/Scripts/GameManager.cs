@@ -134,7 +134,8 @@ public class GameManager : MonoBehaviour
                 main.Response = Response.confused;
                 endStory = new Story()
                 {
-                    audience = AudienceResponse.boo
+                    audience = AudienceResponse.boo,
+                    title = "Play Again",
                 };
                 break;
 
@@ -160,15 +161,19 @@ public class GameManager : MonoBehaviour
 
             case (Prop.dress, CharacterType.Dragon):
                 main.Prop = Prop.dragon;
+                Destroy(other);
                 break;
             case (Prop.dress, CharacterType.Knight):
                 main.Prop = Prop.knight;
+                Destroy(other);
                 break;
 
             case (Prop.dress, CharacterType.Wizard):
+                // TODO
                 endStory = new Story()
                 {
-                    audience = AudienceResponse.boo
+                    audience = AudienceResponse.boo,
+                    title = "Play Again",
                 };
                 break;
 
@@ -182,7 +187,8 @@ public class GameManager : MonoBehaviour
                 main.Die();
                 endStory = new Story()
                 {
-                    audience = AudienceResponse.boo
+                    audience = AudienceResponse.boo,
+                    title = "Play Again",
                 };
                 break;
             case (Prop.lightning, CharacterType.Princess):
@@ -251,6 +257,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.laughing,
+                    title = "Good Boy",
                 };
                 break;
             case (CharacterType.Dragon, Prop.sword, CharacterType.Wizard):
@@ -260,6 +267,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.laughing,
+                    title = "Good Girl",
                 };
                 break;
             case (CharacterType.Dragon, Prop.magic, CharacterType.Princess):
@@ -308,6 +316,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
+                    title = "Everybody Happy",
                 };
                 break;
             case (CharacterType.Princess, Prop.dragon, CharacterType.Wizard):
@@ -357,6 +366,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.laughing,
+                    title = "Good Girl",
                 };
                 break;
         };

@@ -71,7 +71,7 @@ public class Character : MonoBehaviour
                 Prop = global::Prop.fire;
                 break;
             case CharacterType.Princess:
-                Prop = global::Prop.dress;
+                Prop = global::Prop.sparkle;
                 break;
         }
     }
@@ -110,6 +110,7 @@ public class Character : MonoBehaviour
         {
             global::Prop.lightning => lightning,
             global::Prop.sword => sword,
+            global::Prop.sparkle => charm,
             global::Prop.fire => fire,
             global::Prop.key => key,
             global::Prop.dress => dress,

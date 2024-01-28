@@ -5,6 +5,7 @@ public enum Prop
     fire,
     key,
     dress,
+    sparkle,
     magic,
 
     dragon,
