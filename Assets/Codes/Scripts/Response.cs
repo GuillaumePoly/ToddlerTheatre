@@ -4,6 +4,7 @@ public enum Response
     love,
     chef,
     strength,
+    magic,
     yum,
     book,
     teacher,

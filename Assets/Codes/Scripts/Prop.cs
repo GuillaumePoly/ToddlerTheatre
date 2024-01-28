@@ -7,6 +7,7 @@ public enum Prop
     dress,
     sparkle,
     magic,
+    banana,
 
     dragon,
     knight,

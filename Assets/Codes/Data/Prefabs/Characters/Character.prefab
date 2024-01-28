@@ -325,6 +325,7 @@ MonoBehaviour:
   lightning: {fileID: 21300000, guid: 1570c87832d773049a5d6aef2f4c5bca, type: 3}
   key: {fileID: 21300000, guid: 4426fa4c573d7df438e027859ddde9df, type: 3}
   magic: {fileID: 21300000, guid: 024bac411e6252b4fad400ef90164af8, type: 3}
+  banana: {fileID: 21300000, guid: e0aca7d0b04266c4a8363a8fc9404628, type: 3}
   wizard: {fileID: 21300000, guid: c16a29708ff961f4f931e2f9eeb53635, type: 3}
   dragon: {fileID: 21300000, guid: fad44c4b806e2bc488a92e314b06f243, type: 3}
   knight: {fileID: 21300000, guid: ad3ad171098f761488041081f777aa5d, type: 3}

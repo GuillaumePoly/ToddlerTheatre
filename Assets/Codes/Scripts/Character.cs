@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     public Sprite lightning;
     public Sprite key;
     public Sprite magic;
+    public Sprite banana;
     public Sprite wizard;
     public Sprite dragon;
     public Sprite knight;
@@ -91,6 +92,7 @@ public class Character : MonoBehaviour
             global::Response.husband => husband,
             global::Response.wife => wife,
             global::Response.confounded => confounded,
+            global::Response.magic => magic,
             _ => null,
         };
     }
@@ -112,6 +114,7 @@ public class Character : MonoBehaviour
             global::Prop.key => key,
             global::Prop.dress => dress,
             global::Prop.magic => magic,
+            global::Prop.banana => banana,
 
             global::Prop.knight => knight,
             global::Prop.wizard => wizard,

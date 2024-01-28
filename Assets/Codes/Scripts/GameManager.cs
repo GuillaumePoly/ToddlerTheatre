@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             ending = Resolve(character, thirdCharacter);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
 
         AddEnding(ending);
     }
@@ -130,8 +130,9 @@ public class GameManager : MonoBehaviour
                 break;
 
             case (Prop.sword, CharacterType.Wizard):
-                main.Prop = null;
+                main.Prop = Prop.banana;
                 main.Response = Response.confused;
+                other.Response = Response.magic;
                 endStory = new Story()
                 {
                     audience = AudienceResponse.boo,
@@ -161,16 +162,24 @@ public class GameManager : MonoBehaviour
 
             // Princess
             case (Prop.sparkle, CharacterType.Dragon):
-                main.Prop = Prop.dragon;
-                Destroy(other.gameObject);
+                StartCoroutine(nameof(Charm), new CharmArguments
+                {
+                    princess = main,
+                    other = other,
+                    otherProp = Prop.dragon,
+                });
                 break;
             case (Prop.sparkle, CharacterType.Knight):
-                main.Prop = Prop.knight;
-                Destroy(other.gameObject);
+                StartCoroutine(nameof(Charm), new CharmArguments
+                {
+                    princess = main,
+                    other = other,
+                    otherProp = Prop.knight,
+                });
                 break;
 
             case (Prop.sparkle, CharacterType.Wizard):
-                // TODO
+                // TODO frog
                 endStory = new Story()
                 {
                     audience = AudienceResponse.boo,
@@ -186,6 +195,7 @@ public class GameManager : MonoBehaviour
             case (Prop.lightning, CharacterType.Knight):
                 main.Prop = null;
                 main.Die();
+                other.Response = Response.strength;
                 endStory = new Story()
                 {
                     audience = AudienceResponse.boo,
@@ -220,6 +230,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
+                    title = "The Original Story",
                 };
                 break;
             case (CharacterType.Knight, Prop.key, CharacterType.Wizard):
@@ -229,6 +240,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.awww,
+                    title = "Magic Marriage",
                 };
                 break;
             case (CharacterType.Knight, Prop.dress, CharacterType.Dragon):
@@ -238,6 +250,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.awww,
+                    title = "Flames of Passion",
                 };
                 break;
             case (CharacterType.Knight, Prop.dress, CharacterType.Wizard):
@@ -247,6 +260,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.awww,
+                    title = "Magic Marriage",
                 };
                 break;
 
@@ -308,6 +322,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
+                    title = "Everybody Happy",
                 };
                 break;
             case (CharacterType.Princess, Prop.dragon, CharacterType.Knight):
@@ -317,7 +332,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
-                    title = "Everybody Happy",
+                    title = "Scaly Happy People",
                 };
                 break;
             case (CharacterType.Princess, Prop.dragon, CharacterType.Wizard):
@@ -327,6 +342,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
+                    title = "Fiery Feast",
                 };
                 break;
 
@@ -339,6 +355,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
+                    title = "The Apprentice",
                 };
                 break;
             case (CharacterType.Wizard, Prop.key, CharacterType.Knight):
@@ -349,6 +366,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.clap,
+                    title = "Rollercastle",
                 };
                 break;
             case (CharacterType.Wizard, Prop.dress, CharacterType.Knight):
@@ -358,6 +376,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.awww,
+                    title = "Mrs. Doubtfire",
                 };
                 break;
             case (CharacterType.Wizard, Prop.dress, CharacterType.Dragon):
@@ -391,6 +410,15 @@ public class GameManager : MonoBehaviour
         leftCurtain.SetBool("close", closed);
         rightCurtain.SetBool("close", closed);
     }
+
+    IEnumerator Charm(object obj)
+    {
+        var arg = obj as CharmArguments;
+
+        yield return new WaitForSeconds(0.8f);
+        arg.princess.Prop = arg.otherProp;
+        Destroy(arg.other.gameObject);
+    }
 }
 
 public class Story
@@ -406,4 +434,11 @@ public enum AudienceResponse
     awww,
     boo,
     horrifying,
+}
+
+class CharmArguments
+{
+    public Character princess;
+    public Character other;
+    public Prop otherProp;
 }
