@@ -23,6 +23,8 @@ public class Character : MonoBehaviour
     public Sprite husband;
     public Sprite wife;
     public Sprite confounded;
+    public Sprite rollercoaster;
+    public Sprite balloon;
 
     public Sprite sword;
     public Sprite charm;
@@ -101,6 +103,8 @@ public class Character : MonoBehaviour
             global::Response.wife => wife,
             global::Response.confounded => confounded,
             global::Response.magic => magic,
+            global::Response.rollercoaster => rollercoaster,
+            global::Response.balloon => balloon,
             _ => null,
         };
     }
@@ -131,9 +135,11 @@ public class Character : MonoBehaviour
         };
     }
 
-    public void Die()
+    public void Die(bool setResponse = true)
     {
-        Response = global::Response.death;
+        if (setResponse) {
+            Response = global::Response.death;
+        }
         Prop = null;
         animator.SetBool("isDeath", true);
     }
