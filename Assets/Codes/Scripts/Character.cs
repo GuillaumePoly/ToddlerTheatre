@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
     public Sprite chef;
     public Sprite husband;
     public Sprite wife;
+    public Sprite confounded;
 
     public Sprite sword;
     public Sprite charm;
@@ -92,6 +93,7 @@ public class Character : MonoBehaviour
             global::Response.chef => chef,
             global::Response.husband => husband,
             global::Response.wife => wife,
+            global::Response.confounded => confounded,
             _ => null,
         };
     }

@@ -1,5 +1,6 @@
 public enum Response
 {
+    confounded,
     love,
     chef,
     strength,

@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         {
             AudienceResponse.clap => AudioManager.AudioType.CrowdCheering,
             AudienceResponse.laughing => AudioManager.AudioType.CrowdLaughing,
-            AudienceResponse.boo => AudioManager.AudioType.CrowdLaughing,
+            AudienceResponse.boo => AudioManager.AudioType.CrowdBooing,
             _ => AudioManager.AudioType.CrowdCheering,
             //AudienceResponse.awww => throw new NotImplementedException(),
             //AudienceResponse.horrifying => throw new NotImplementedException(),
@@ -145,10 +145,12 @@ public class GameManager : MonoBehaviour
                 break;
             case (Prop.fire, CharacterType.Princess):
                 main.Prop = null;
-                other.Die();
+                main.Response = null;
+                other.Response = Response.confounded;
                 endStory = new Story()
                 {
-                    audience = AudienceResponse.boo
+                    audience = AudienceResponse.boo,
+                    title = "PLAY AGAIN",
                 };
                 break;
             case (Prop.fire, CharacterType.Wizard):
@@ -267,6 +269,7 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.laughing,
+                    title = "The Scaly Chef",
                 };
                 break;
             case (CharacterType.Dragon, Prop.magic, CharacterType.Knight):
@@ -276,12 +279,18 @@ public class GameManager : MonoBehaviour
                 story = new Story
                 {
                     audience = AudienceResponse.horrifying,
+                    title = "Fire Brigade",
                 };
                 break;
 
             // Princess stories
             case (CharacterType.Princess, Prop.knight, CharacterType.Dragon):
                 // TODO
+                story = new Story
+                {
+                    audience = AudienceResponse.awww,
+                    title = "Heartbroken",
+                };
                 break;
             case (CharacterType.Princess, Prop.knight, CharacterType.Wizard):
                 mainProp = null;
