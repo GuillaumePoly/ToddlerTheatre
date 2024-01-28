@@ -17,6 +17,8 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField]
     private Transform selectedCharacter;
 
+    bool playSound = true;
+
     private void OnEnable()
     {
         cam = Camera.main;
@@ -27,7 +29,12 @@ public class CharacterSelection : MonoBehaviour
         if (InputReceiver.m_PressedThisFrame)
         {
             hit = Physics2D.Raycast(InputReceiver.m_WorldPointerPos, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Toddler"));
-            m_AudioManager.PlaySoundGlobal(m_AudioManager.GetAudio(AudioManager.AudioType.Grab), 0.8f, 1f, 0.9f, 1.1f);
+
+            if (playSound)
+            {
+                m_AudioManager.PlaySoundGlobal(m_AudioManager.GetAudio(AudioManager.AudioType.Grab), 0.8f, 1f, 0.9f, 1.1f);
+                playSound = false;
+            }
 
             if (hit.transform != null)
             {
@@ -37,6 +44,7 @@ public class CharacterSelection : MonoBehaviour
         else if (InputReceiver.m_ReleasedThisFrame)
         {
             selectedCharacter = null;
+            playSound = true;
         }
 
         if (selectedCharacter != null)

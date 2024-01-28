@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     IEnumerator AnimateMainCharacter()
     {
         var character = panels.First().currentCharacter;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
 
 
 
