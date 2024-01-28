@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] m_CrowdCheering;
     public AudioClip[] m_CrowdShocked;
     public AudioClip[] m_CrowdAww;
+    
 
     [Title("Interactions")]
     public AudioClip[] m_KnightInteraction;
