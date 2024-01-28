@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -62,18 +63,14 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        switch (type)
+        Prop = type switch
         {
-            case CharacterType.Knight:
-                Prop = global::Prop.sword;
-                break;
-            case CharacterType.Dragon:
-                Prop = global::Prop.fire;
-                break;
-            case CharacterType.Princess:
-                Prop = global::Prop.sparkle;
-                break;
-        }
+            CharacterType.Knight => global::Prop.sword,
+            CharacterType.Dragon => global::Prop.fire,
+            CharacterType.Princess => global::Prop.sparkle,
+            CharacterType.Wizard => global::Prop.lightning,
+            _ => throw new NotImplementedException(),
+        };
     }
 
     private void SetResponse()

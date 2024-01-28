@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 2742423435783544670, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 3d8a149cda5ffbd47b762cc51a0e4052, type: 2}
+      objectReference: {fileID: 9100000, guid: 662253c6632d2ee4583807e682d69d36, type: 2}
     - target: {fileID: 4316141056807855066, guid: 171b2ec90d01e9249b333d909408927b, type: 3}
       propertyPath: m_Name
       value: Wizard
