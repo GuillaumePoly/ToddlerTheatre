@@ -142,8 +142,9 @@ public class Character : MonoBehaviour
 
     public void Die(bool setResponse = true)
     {
-        if (setResponse) {
-            Response = global::Response.death;
+        if (setResponse)
+        {
+            Response = null;
         }
         Prop = null;
         animator.SetBool("isDeath", true);

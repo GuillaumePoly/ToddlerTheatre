@@ -13,6 +13,6 @@ public class DragonFire : MonoBehaviour
 
     public void StopFire()
     {
-        m_Animator.SetBool("Fire", true);
+        m_Animator.SetBool("Fire", false);
     }
 }

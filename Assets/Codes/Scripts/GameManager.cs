@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         if (_isPlaying) return;
         m_PlayButton.SetActive(false);
-        
+
         foreach (var panel in panels) panel.isLocked = true;
 
         _isPlaying = true;
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator StartVignette()
     {
-       
+
         float t = 0;
         if (t <= m_MaxVignette)
         {
@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
         var character = panels.First().currentCharacter;
         yield return new WaitForSeconds(2);
 
-      
-        
+
+
         var secondPanelPos = panels[1].mainCharacterMarker;
 
         var secondCharacter = panels[1].currentCharacter;
@@ -83,7 +83,10 @@ public class GameManager : MonoBehaviour
 
         Story ending;
 
-        character.animator.SetBool("IsAttacking", true);
+        if (!(character.type == CharacterType.Dragon && secondCharacter.type == CharacterType.Princess))
+        {
+            character.animator.SetBool("IsAttacking", true);
+        }
         ending = Interact(character, secondCharacter);
 
         if (ending == null)
@@ -174,8 +177,7 @@ public class GameManager : MonoBehaviour
                 break;
             case (Prop.fire, CharacterType.Princess):
                 main.Prop = null;
-                main.Response = null;
-                other.Response = Response.confounded;
+                main.Response = Response.confounded;
                 endStory = new Story()
                 {
                     audience = AudienceResponse.boo,
@@ -221,6 +223,7 @@ public class GameManager : MonoBehaviour
                 other.Die();
                 break;
             case (Prop.lightning, CharacterType.Knight):
+                main.animator.SetBool("IsAttacking", false);
                 main.Prop = null;
                 main.Die();
                 other.Response = Response.strength;
@@ -327,6 +330,7 @@ public class GameManager : MonoBehaviour
                 mainProp = null;
                 mainResponse = Response.strength;
                 otherDies = true;
+                main.animator.SetBool("IsAttacking", true);
                 story = new Story
                 {
                     audience = AudienceResponse.horrifying,
@@ -347,7 +351,7 @@ public class GameManager : MonoBehaviour
                 };
                 break;
             case (CharacterType.Princess, Prop.knight, CharacterType.Wizard):
-                mainProp = null;
+                mainProp = Prop.knight;
                 mainResponse = Response.love;
                 otherResponse = Response.love;
                 story = new Story
