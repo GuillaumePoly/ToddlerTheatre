@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public float m_MaxVignette;
 
     private bool startVignette;
-    private float vignetteDelta;
+    private float vignetteDelta = 0;
 
     void Update()
     {
@@ -50,7 +51,6 @@ public class GameManager : MonoBehaviour
 
     public void Vignette()
     {
-        
         if (vignetteDelta <= m_MaxVignette)
         {
             vignetteDelta += Time.deltaTime;
@@ -81,17 +81,7 @@ public class GameManager : MonoBehaviour
         _isPlaying = true;
         StartCoroutine(nameof(AnimateMainCharacter));
     }
-    IEnumerator StartVignette()
-    {
-
-        float t = 0;
-        if (t <= m_MaxVignette)
-        {
-            t += Time.deltaTime;
-        }
-        pp.GetSetting<Vignette>().intensity.value = t;
-        yield return null;
-    }
+   
     IEnumerator AnimateMainCharacter()
     {
         var character = panels.First().currentCharacter;
