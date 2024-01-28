@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,23 +25,48 @@ public class GameManager : MonoBehaviour
 
     private bool _isPlaying;
 
-    public PostProcessProfile pp;
+    public PostProcessVolume pp;
     public float m_MaxVignette;
-    public Vignette v;
+
+    private bool startVignette;
+    private float vignetteDelta;
 
     void Update()
     {
+        if (isReadyToPlay)
+        {
+            startVignette = true;
+        }
+
+        if (startVignette)
+        {
+            Vignette();
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("SampleScene");
         }
     }
 
+    public void Vignette()
+    {
+        
+        if (vignetteDelta <= m_MaxVignette)
+        {
+            vignetteDelta += Time.deltaTime;
+            pp.profile.GetSetting<Vignette>().intensity.value = vignetteDelta;
+        }
+        else
+        {
+            startVignette = false;
+            vignetteDelta = m_MaxVignette;
+        }
+        
+    }
     public void TryPlay()
     {
         if (isReadyToPlay)
         {
-            StartCoroutine(StartVignette());
             PlayScene();
         }
     }
